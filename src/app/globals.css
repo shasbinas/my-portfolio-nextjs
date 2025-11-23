@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --background: 0 0% 97%;
+    --foreground: 0 0% 2%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 30%;
+    --hover-bg: 142 76% 96%;
+    --border: 0 0% 70%;
+    --border-hover: 142 76% 46%;
+    --accent: 0 0% 0%;
+    --link: 142 76% 36%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3%;
+    --foreground: 0 0% 98%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 60%;
+    --hover-bg: 142 76% 10%;
+    --border: 0 0% 30%;
+    --accent: 0 0% 100%;
+    --link: 142 76% 46%;
+  }
+
+  * {
+    scroll-behavior: smooth;
+    font-family: var(--font-outfit);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family:
+      var(--font-outfit),
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+  }
+
+  ::selection {
+    background: hsl(0, 0%, 10%);
+    color: #fff;
+  }
+
+  .dark ::selection {
+    background: hsl(0, 0%, 100%);
+    color: #000;
+  }
+}
+
+@layer utilities {
+
+  /* Links */
+  a,
+  .link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover:not(.btn):not(.btn *),
+  .link:hover:not(.btn):not(.btn *) {
+    color: hsl(var(--link));
+  }
+
+  /* Buttons */
+  .btn {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--background));
+    border: none;
+    border-radius: var(--radius);
+  }
+
+  .btn:hover {
+    background-color: hsl(var(--accent) / 0.85);
+  }
+
+  /* Badges */
+  .badge {
+    background-color: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+  }
+
+  .badge:hover {
+    border-color: hsl(var(--border-hover));
+  }
+
+  /* Boxes */
+  .box {
+    background-color: hsl(var(--muted));
+    border-radius: var(--radius);
+  }
+
+  .box:hover {
+    background-color: hsl(var(--muted));
+    border-color: hsl(var(--border));
+  }
+
+  /* Utility classes */
+  .accent {
+    color: hsl(var(--accent));
+  }
+
+  .text-muted-foreground {
+    color: hsl(var(--muted-foreground));
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+
+  .bg-muted {
+    background-color: hsl(var(--muted));
+  }
+
+  .bg-accent {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--background));
+  }
+
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+
+  /* Grid Pattern Desktop */
+  .grid-pattern {
+    -webkit-mask-image: linear-gradient(150deg, #000 0%, #000 2%, transparent 18%, transparent 100%);
+    mask-image: linear-gradient(150deg, #000 0%, #000 2%, transparent 18%, transparent 100%);
+  }
+
+  /* Mobile override */
+  @media (max-width: 768px) {
+    .grid-pattern {
+      -webkit-mask-image: linear-gradient(150deg, #000 0%, #000 0%, transparent 8%, transparent 100%);
+      mask-image: linear-gradient(150deg, #000 0%, #000 0%, transparent 8%, transparent 100%);
+    }
+  }
+
+}
