@@ -1,205 +1,199 @@
 "use client";
 
-import { User, Mail } from "lucide-react";
-import { LuMessageSquareShare } from "react-icons/lu";
-import { FaRegCommentDots } from "react-icons/fa";
-import { useState, ChangeEvent, FormEvent, ComponentType } from "react";
-import { FORM_ENDPOINT } from "../constants/data";
+import { useState } from "react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  Phone,
+  Instagram,
+  Copy,
+  Check,
+} from "lucide-react";
+import { SiLeetcode, SiWhatsapp } from "react-icons/si";
+import { ABOUT_ME, SOCIAL_LINKS } from "../constants/data";
 
-// =============================================
-// TYPE DEFINITIONS
-// =============================================
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
-
-interface FormField {
-  name: keyof FormData;
-  type: string;
+type ContactLink = {
   label: string;
-  icon: ComponentType<{ className?: string }>;
-  placeholder: string;
-  rows?: number;
-}
-
-type FormStatus = "idle" | "submitting" | "success" | "error";
-
-type SetStateFunction<T> = (value: T | ((prev: T) => T)) => void;
-
-// =============================================
-// FORM CONFIGURATION
-// =============================================
-const FORM_CONFIG = {
-  endpoint: FORM_ENDPOINT,
-  initialData: { name: "", email: "", message: "" } as FormData,
-  fields: [
-    {
-      name: "name",
-      type: "text",
-      label: "Name",
-      icon: User,
-      placeholder: "Your name",
-    },
-    {
-      name: "email",
-      type: "email",
-      label: "Email",
-      icon: Mail,
-      placeholder: "your.email@example.com",
-    },
-    {
-      name: "message",
-      type: "textarea",
-      label: "Message",
-      icon: FaRegCommentDots,
-      placeholder: "What would you like to discuss?",
-      rows: 4,
-    },
-  ] as FormField[],
+  value: string;
+  href?: string;
+  icon: React.ComponentType<{ className?: string }>;
 };
 
-// =============================================
-// HELPER FUNCTIONS
-// =============================================
-const submitForm = async (
-  formData: FormData,
-  setStatus: SetStateFunction<FormStatus>,
-  setErrorMessage: SetStateFunction<string>,
-  setFormData: SetStateFunction<FormData>
-) => {
-  setStatus("submitting");
-  setErrorMessage("");
-
-  try {
-    const response = await fetch(FORM_CONFIG.endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      setStatus("success");
-      setFormData(FORM_CONFIG.initialData);
-    } else {
-      const errorData = await response.json();
-      setErrorMessage(
-        errorData.error || "Something went wrong. Please try again."
-      );
-      setStatus("error");
-    }
-  } catch {
-    setErrorMessage("An unexpected error occurred. Please try again.");
-    setStatus("error");
-  }
-};
-
-const renderField = (
-  field: FormField,
-  formData: FormData,
-  handleChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
-) => {
-  const Icon = field.icon;
-  const commonClasses =
-    "w-full pl-10 pr-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-border-hover";
-
-  return (
-    <div key={field.name}>
-      <label htmlFor={field.name} className="block text-sm font-medium mb-2">
-        {field.label}
-      </label>
-      <div className="relative text-sm">
-        <div
-          className={`absolute ${field.type === "textarea" ? "top-3" : "inset-y-0"} left-3 flex items-center text-muted-foreground`}
-        >
-          <Icon className="w-5 h-5" />
-        </div>
-        {field.type === "textarea" ? (
-          <textarea
-            id={field.name}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange}
-            required
-            placeholder={field.placeholder}
-            rows={field.rows}
-            className={`${commonClasses} resize-none`}
-          />
-        ) : (
-          <input
-            type={field.type}
-            id={field.name}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange}
-            required
-            placeholder={field.placeholder}
-            className={commonClasses}
-          />
-        )}
-      </div>
-    </div>
-  );
-};
-
-// =============================================
-// MAIN COMPONENT
-// =============================================
 const Contact = () => {
-  const [formData, setFormData] = useState<FormData>(FORM_CONFIG.initialData);
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const emailAddress =
+    SOCIAL_LINKS.email?.replace("mailto:", "") || ABOUT_ME.email;
+  const [copied, setCopied] = useState(false);
+  const whatsappLink = SOCIAL_LINKS.whatsapp;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const contactLinks: ContactLink[] = [
+    {
+      label: "Email",
+      value: emailAddress,
+      href: SOCIAL_LINKS.email,
+      icon: Mail,
+    },
+    SOCIAL_LINKS.github && {
+      label: "GitHub",
+      value: SOCIAL_LINKS.github.replace("https://", ""),
+      href: SOCIAL_LINKS.github,
+      icon: Github,
+    },
+    SOCIAL_LINKS.linkedin && {
+      label: "LinkedIn",
+      value: SOCIAL_LINKS.linkedin.replace("https://", ""),
+      href: SOCIAL_LINKS.linkedin,
+      icon: Linkedin,
+    },
+    SOCIAL_LINKS.leetcode && {
+      label: "LeetCode",
+      value: SOCIAL_LINKS.leetcode.replace("https://", ""),
+      href: SOCIAL_LINKS.leetcode,
+      icon: SiLeetcode,
+    },
+    SOCIAL_LINKS.phone && {
+      label: "Phone",
+      value: SOCIAL_LINKS.phone,
+      href: `tel:${SOCIAL_LINKS.phone.replace(/\s+/g, "")}`,
+      icon: Phone,
+    },
+    SOCIAL_LINKS.instagram && {
+      label: "Instagram",
+      value: SOCIAL_LINKS.instagram.replace("https://", ""),
+      href: SOCIAL_LINKS.instagram,
+      icon: Instagram,
+    },
+  ].filter(Boolean) as ContactLink[];
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // no-op
+    }
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    submitForm(formData, setStatus, setErrorMessage, setFormData);
+  const handleOpenWhatsApp = () => {
+    if (whatsappLink) {
+      window.open(whatsappLink, "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
-    <section className="py-5">
-      <h2 className="text-xl font-semibold mb-4">let&apos;s connect.</h2>
+    <section className="py-6 space-y-4">
+      <h2 className="section-title">let&apos;s connect.</h2>
 
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
-          I&apos;d love to hear from you! Whether you have a question, want to
-          discuss a project, or just want to say hi, feel free to reach out
-          using the form below.
-        </p>
-
-        <form onSubmit={handleSubmit} className="space-y-4 p-2">
-          {FORM_CONFIG.fields.map((field) =>
-            renderField(field, formData, handleChange)
-          )}
-
-          <button
-            type="submit"
-            disabled={status === "submitting"}
-            className={`w-full px-3 py-2 rounded-lg text-sm btn font-medium flex items-center justify-center gap-2 ${status === "submitting" ? "opacity-70 cursor-not-allowed" : ""}`}
-          >
-            {status === "submitting" ? (
-              "Sending..."
-            ) : (
-              <>
-                <span>Send Message</span>{" "}
-                <LuMessageSquareShare className="w-4 h-4" />
-              </>
-            )}
-          </button>
-
-          {status === "success" && (
-            <p className="text-green-600 text-sm text-center">
-              Got your message! I&apos;ll get back to you soon.
+      <div className="grid gap-6 lg:grid-cols-2">
+        <div className="glass-panel p-6 space-y-6">
+          <div>
+            <p className="text-xl font-semibold">Let&apos;s Connect</p>
+            <p className="text-sm text-muted-foreground">
+              I&apos;m always open to new opportunities, freelance gigs, or a quick
+              coffee chat about ideas.
             </p>
-          )}
-          {status === "error" && (
-            <p className="text-red-600 text-sm text-center">{errorMessage}</p>
-          )}
-        </form>
+          </div>
+
+          <div className="space-y-3">
+            {contactLinks.map((item) => {
+              const Icon = item.icon;
+              const content = (
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent)/0.15)] flex items-center justify-center">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                      {item.label}
+                    </p>
+                    <p className="text-sm font-medium break-all">{item.value}</p>
+                  </div>
+                </div>
+              );
+
+              return item.href ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 transition-colors hover:border-[hsl(var(--border)/0.6)]"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div
+                  key={item.label}
+                  className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3"
+                >
+                  {content}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="glass-panel p-6 space-y-4">
+          <div>
+            <p className="text-xl font-semibold">Get In Touch</p>
+            <p className="text-sm text-muted-foreground">
+              Choose your preferred way to reach me.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-[hsl(var(--border)/0.35)] p-5 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[hsl(var(--accent)/0.15)] flex items-center justify-center">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold">Email Me</p>
+                <p className="text-xs text-muted-foreground">
+                  Send me an email directly.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <div className="relative px-4 py-3 rounded-xl border border-[hsl(var(--border)/0.35)] bg-[hsl(var(--background)/0.6)] text-sm font-mono flex items-center justify-between gap-3">
+                <span className="truncate">{emailAddress}</span>
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="inline-flex items-center gap-1 text-xs font-semibold rounded-lg px-3 py-1.5 bg-[hsl(var(--accent))] text-[hsl(var(--background))]"
+                >
+                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  {copied ? "Copied" : "Copy"}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-[hsl(var(--border)/0.35)] p-5 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-green-500/10 text-green-400 flex items-center justify-center">
+                <SiWhatsapp className="w-5 h-5" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold">WhatsApp</p>
+                <p className="text-xs text-muted-foreground">
+                  Chat with me instantly.
+                </p>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleOpenWhatsApp}
+              disabled={!whatsappLink}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-green-500 text-white text-sm font-semibold py-3 transition hover:bg-green-400 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <SiWhatsapp className="w-4 h-4" />
+              Open WhatsApp
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

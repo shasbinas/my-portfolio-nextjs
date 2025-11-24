@@ -53,9 +53,9 @@ const useISTTime = () => {
 // UI COMPONENTS
 // =============================================
 const ProfileImage = ({ isHovering, setIsHovering }: ProfileImageProps) => (
-  <div className="flex-shrink-0">
+  <div className="flex-shrink-0 relative">
     <div
-      className="w-24 h-24 rounded-full overflow-hidden border-4 border-border cursor-pointer duration-200"
+      className="w-28 h-28 rounded-3xl overflow-hidden border border-border cursor-pointer duration-300 hover-lift"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
@@ -63,8 +63,8 @@ const ProfileImage = ({ isHovering, setIsHovering }: ProfileImageProps) => (
         <Image
           src={ABOUT_ME.profileGif}
           alt="Profile GIF"
-          width={96}
-          height={96}
+          width={112}
+          height={112}
           className="w-full h-full object-cover"
           unoptimized
         />
@@ -72,13 +72,14 @@ const ProfileImage = ({ isHovering, setIsHovering }: ProfileImageProps) => (
         <Image
           src={ABOUT_ME.profileImage}
           alt={ABOUT_ME.name}
-          width={96}
-          height={96}
+          width={112}
+          height={112}
           className="w-full h-full object-cover"
           priority
         />
       )}
     </div>
+    <span className="absolute -inset-3 blur-2xl bg-gradient-to-br from-[hsl(var(--accent)/0.45)] to-[hsl(var(--accent-secondary)/0.35)] opacity-60 pointer-events-none"></span>
   </div>
 );
 
@@ -88,23 +89,27 @@ const VerifiedBadge = ({ showTooltip, setShowTooltip }: VerifiedBadgeProps) => (
     onMouseEnter={() => setShowTooltip(true)}
     onMouseLeave={() => setShowTooltip(false)}
   >
-    <MdVerified className="w-6 h-6 cursor-pointer" />
+    <span className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+      <MdVerified className="w-4 h-4 text-[hsl(var(--border-hover))]" />
+      verified
+    </span>
     {showTooltip && (
-      <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-white text-black text-sm px-2 py-1 rounded-lg whitespace-nowrap z-10 shadow-lg">
-        npm verified: human@latest
-        <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-black dark:border-t-white"></div>
+      <div className="absolute -top-14 left-1/2 -translate-x-1/2 bg-black/90 text-white text-xs px-3 py-1 rounded-full whitespace-nowrap shadow-2xl border border-border">
+        npm verified · human@latest
       </div>
     )}
   </div>
 );
 
 const LocationTime = ({ currentTime }: LocationTimeProps) => (
-  <div className="hidden md:block text-base text-muted-foreground space-y-1 text-right">
-    <div className="flex items-center gap-2 justify-end">
-      <FaLocationCrosshairs className="w-4 h-4" />
-      <span className="font-mono">{ABOUT_ME.location}</span>
+  <div className="hidden md:flex flex-col items-end gap-2 text-right text-sm">
+    <div className="contact-card flex items-center gap-2 text-muted-foreground">
+      <FaLocationCrosshairs className="w-4 h-4 text-[hsl(var(--border-hover))]" />
+      <span className="font-mono uppercase tracking-wide">{ABOUT_ME.location}</span>
     </div>
-    <div className="font-mono">{currentTime} IST</div>
+    <div className="contact-card font-mono text-foreground">
+      {currentTime} IST
+    </div>
   </div>
 );
 
@@ -118,26 +123,52 @@ const Header = () => {
   const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
   return (
-    <section className="pt-5">
-      <div className="flex items-center gap-4 mb-4">
-        <ProfileImage isHovering={isHovering} setIsHovering={setIsHovering} />
+    <section className="pt-4">
+      <div className="glass-panel hover-lift space-y-6">
+        <div className="flex flex-col gap-6 md:flex-row md:items-center">
+          <ProfileImage isHovering={isHovering} setIsHovering={setIsHovering} />
 
-        <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-bold">
-              {ABOUT_ME.name}
-            </h1>
-            <VerifiedBadge
-              showTooltip={showTooltip}
-              setShowTooltip={setShowTooltip}
-            />
+          <div className="flex-1 space-y-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl font-semibold tracking-tight">
+                {ABOUT_ME.name}
+              </h1>
+              <VerifiedBadge
+                showTooltip={showTooltip}
+                setShowTooltip={setShowTooltip}
+              />
+            </div>
+            <p className="text-sm uppercase tracking-[0.35em] text-muted-foreground">
+              {ABOUT_ME.title}
+            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
+              {ABOUT_ME.description[0]}
+            </p>
           </div>
-          <p className="text-base text-muted-foreground font-medium">
-            {ABOUT_ME.title}
-          </p>
+
+          <LocationTime currentTime={currentTime} />
         </div>
 
-        <LocationTime currentTime={currentTime} />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+          <div className="contact-card">
+            <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
+              availability
+            </p>
+            <p className="font-semibold">Open to remote collabs</p>
+          </div>
+          <div className="contact-card">
+            <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
+              speciality
+            </p>
+            <p className="font-semibold">Backend systems & secure APIs</p>
+          </div>
+          <div className="contact-card">
+            <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
+              timezone
+            </p>
+            <p className="font-semibold">IST · UTC+05:30</p>
+          </div>
+        </div>
       </div>
     </section>
   );

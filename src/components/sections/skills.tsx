@@ -74,7 +74,7 @@ const SKILL_ICONS: Record<string, string> = {
 };
 
 const SkillBadge = ({ skill }: { skill: string }) => (
-  <span className="px-2 py-1 text-sm badge text-foreground flex items-center gap-2">
+  <span className="skill-chip">
     {SKILL_ICONS[skill] && (
       <Image
         src={`https://skillicons.dev/icons?i=${SKILL_ICONS[skill]}`}
@@ -90,12 +90,16 @@ const SkillBadge = ({ skill }: { skill: string }) => (
 
 const Skills = () => {
   return (
-    <section className="py-5 border-t border-border">
-      <h2 className="text-xl font-semibold mb-4">technical skills.</h2>
-      <div className="space-y-4">
+    <section className="py-6 space-y-4">
+      <h2 className="section-title">technical skills.</h2>
+      <div className="glass-panel hover-lift space-y-5">
         {Object.entries(SKILLS).map(([key, skills]) => (
-          <div key={key} className="space-y-2">
-            <h3 className="text-base font-mono font-medium text-muted-foreground">
+          <div
+            key={key}
+            className="rounded-2xl border p-4 bg-[hsl(var(--muted)/0.35)] transition-all hover:border-[hsl(var(--border-hover))]"
+            style={{ borderColor: "hsl(var(--border) / 0.6)" }}
+          >
+            <h3 className="text-sm uppercase tracking-[0.35em] text-muted-foreground mb-3">
               {"< " + key + " />"}
             </h3>
             <div className="flex flex-wrap gap-2">

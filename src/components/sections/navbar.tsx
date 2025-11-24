@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { ABOUT_ME } from "../constants/data";
 import ThemeToggle from "../ui/theme-toggle";
@@ -8,14 +9,20 @@ const STAGGER = 30; // Delay between each letter in milliseconds
 // Navigation items with their respective href values
 const navItems = [
   { name: "skills", href: "#skills" },
+  { name: "github", href: "#github" },
+  { name: "leetcode", href: "#leetcode" },
   { name: "projects", href: "#projects" },
-  // { name: "blog", href: "#blog" },
+  { name: "achievements", href: "#achievements" },
+  { name: "education", href: "#education" },
   { name: "contact", href: "#contact" },
 ];
 
 export default function Navbar() {
   // Handle smooth scroll to section when nav link is clicked
-  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleScrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
     e.preventDefault();
     const element = document.getElementById(href.substring(1)); // Remove '#' from href
     if (element) element.scrollIntoView({ behavior: "instant" });
@@ -41,12 +48,15 @@ export default function Navbar() {
               {/* Container for letter animations */}
               <span className="relative inline-block">
                 {item.name.split("").map((letter, i) => (
-                  <span key={i} className="relative inline-block overflow-hidden">
+                  <span
+                    key={i}
+                    className="relative inline-block overflow-hidden"
+                  >
                     {/* Original letter that slides up on hover */}
                     <span
                       className="block transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:-translate-y-full group-hover:opacity-80"
                       style={{
-                        transitionDelay: `${i * STAGGER}ms`
+                        transitionDelay: `${i * STAGGER}ms`,
                       }}
                     >
                       {letter}
@@ -57,7 +67,7 @@ export default function Navbar() {
                       className="block absolute left-0 top-0 font-medium translate-y-full opacity-0 transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0 group-hover:opacity-100"
                       style={{
                         transitionDelay: `${i * STAGGER}ms`,
-                        color: 'hsl(var(--link))' // Green color from your CSS
+                        color: "hsl(var(--link))", // Green color from your CSS
                       }}
                     >
                       {letter}

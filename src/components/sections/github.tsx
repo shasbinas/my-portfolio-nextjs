@@ -7,9 +7,6 @@ import { SiGithub } from "react-icons/si";
 import Link from "next/link";
 import { USER_NAMES, SOCIAL_LINKS } from "@/components/constants/data";
 
-// =============================================
-// THEME HOOK
-// =============================================
 const useTheme = () => {
   const [colorScheme, setColorScheme] = useState<"light" | "dark">("dark");
 
@@ -33,44 +30,47 @@ const useTheme = () => {
   return colorScheme;
 };
 
-// =============================================
-// MAIN COMPONENT
-// =============================================
 export default function Github() {
   const colorScheme = useTheme();
 
   return (
-    <section className="py-5" id="github">
-      <h2 className="text-xl font-semibold mb-4">github.</h2>
-
-      {/* GitHub Profile Link */}
-      <div className="mb-4 flex items-center gap-2">
-        <Link
-          href={SOCIAL_LINKS.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-link text-sm font-mono font-medium text-muted-foreground transition-colors flex items-center gap-1"
-        >
-          <SiGithub
-            className="inline-block align-middle mr-1 text-muted-foreground"
-            size={16}
-            style={{ transition: "none" }}
-          />
-          {USER_NAMES.githubUsername}
-          <MdOutlineArrowOutward className="inline-block w-4 h-4 ml-1" />
-        </Link>
+    <section className="py-6 space-y-4" id="github">
+      <div className="flex flex-col gap-2">
+        <h2 className="section-title">github.</h2>
+        <p className="text-sm text-muted-foreground">
+          Building in public – contributions, experiments, and playful repos.
+        </p>
       </div>
 
-      {/* GitHub Calendar */}
-      <div className="w-full overflow-hidden">
-        <div className="overflow-x-auto">
-          <div className="flex justify-center">
+      <div className="glass-panel hover-lift space-y-4">
+        <div className="flex items-center gap-2 text-sm font-mono text-muted-foreground">
+          <Link
+            href={SOCIAL_LINKS.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 hover:text-[hsl(var(--border-hover))]"
+          >
+            <SiGithub className="w-4 h-4" />
+            {USER_NAMES.githubUsername}
+            <MdOutlineArrowOutward className="w-4 h-4" />
+          </Link>
+          <span className="px-3 py-1 rounded-full border text-[0.65rem] uppercase tracking-[0.3em]" style={{ borderColor: "hsl(var(--border) / 0.5)" }}>
+            activity
+          </span>
+        </div>
+
+        <div
+          className="w-full overflow-hidden rounded-2xl border"
+          style={{ borderColor: "hsl(var(--border) / 0.4)" }}
+        >
+          <div className="w-full overflow-x-auto p-4">
             <GitHubCalendar
               username={USER_NAMES.githubUsername}
-              blockSize={8}
+              blockSize={14}
               blockMargin={5}
               colorScheme={colorScheme}
               fontSize={12}
+              style={{ width: "100%" }}
             />
           </div>
         </div>

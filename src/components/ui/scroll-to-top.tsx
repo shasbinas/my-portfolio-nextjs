@@ -48,16 +48,16 @@ export default function ScrollToTop() {
             cy="24"
             r="20"
             fill="none"
-            stroke="hsl(var(--background))"
+            stroke="hsl(var(--foreground))"
             strokeWidth="3"
-            opacity="0.3"
+            opacity="0.25"
           />
           <circle
             cx="24"
             cy="24"
             r="20"
             fill="none"
-            stroke="hsl(var(--background))"
+            stroke="hsl(var(--foreground))"
             strokeWidth="3"
             strokeLinecap="round"
             strokeDasharray={125.66}
@@ -69,7 +69,7 @@ export default function ScrollToTop() {
         <div className="absolute inset-0 flex items-center justify-center">
           <FaArrowUp
             size={12}
-            color="hsl(var(--background))"
+            color="hsl(var(--foreground))"
             className="transition-transform duration-300 group-hover:-translate-y-0.5"
           />
         </div>

@@ -1,4 +1,4 @@
-// This file contains constants and data used across the portfolio template. 
+// This file contains constants and data used across the portfolio template.
 // Update the values to personalize your portfolio.
 
 export const ABOUT_ME = {
@@ -17,7 +17,7 @@ export const ABOUT_ME = {
 export const USER_NAMES = {
   githubUsername: "shasbinas",
   leetcodeUsername: "shasbinas", // remove or keep blank if you don't have a LeetCode profile
-//   hashnodeUsername: "your-hashnode-username", // remove or keep blank if you don't have a Hashnode profile
+  //   hashnodeUsername: "your-hashnode-username", // remove or keep blank if you don't have a Hashnode profile
 };
 
 export const SOCIAL_LINKS = {
@@ -26,48 +26,88 @@ export const SOCIAL_LINKS = {
   // twitter: "https://twitter.com/your-twitter",
   leetcode: "https://leetcode.com/shasbinas",
   // peerlist: "https://peerlist.io/your-peerlist", // remove or keep blank if you don't have a Peerlist profile
-  // instagram: "https://instagram.com/your-instagram",
+  instagram: "",
   email: "mailto:shasbinas1@gmail.com",
   // blog: "https://yourblog.com", // remove if you don't have a blog
-  resume: "https://drive.google.com/file/d/1lf2eQpjK10k9CFMpI7HCLGmskxRb3hdT/view?usp=sharing",
+  resume:
+    "https://drive.google.com/file/d/1lf2eQpjK10k9CFMpI7HCLGmskxRb3hdT/view?usp=sharing",
+  phone: "+91 00000 00000",
+  whatsapp: "https://wa.me/910000000000",
 };
 
 // Contact form endpoint (update with your own Formspree endpoint)
 export const FORM_ENDPOINT = "https://formspree.io/f/your-form-id";
 
-export const SKILLS = { // Keep only the skills you want to showcase and remove the rest
+export const SKILLS = {
+  // Keep only the skills you want to showcase and remove the rest
   frontend: [
-    "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Bootstrap",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Bootstrap",
   ],
-  backend: [
-    "Node.js", "Express.js" 
-  ],
-  databases: [
-    "MongoDB", "MySQL", "PostgreSQL", "Redis"
-  ],
+  backend: ["Node.js", "Express.js"],
+  databases: ["MongoDB", "MySQL", "PostgreSQL", "Redis"],
   languages: [
-    "C", "C++", "Java", "Python", "Django", "JavaScript", "TypeScript"
+    "C",
+    "C++",
+    "Java",
+    "Python",
+    "Django",
+    "JavaScript",
+    "TypeScript",
   ],
-  cloudDevOps: [
-    "AWS", "Docker", "Vercel","GitHub Actions",
-  ],
+  cloudDevOps: ["AWS", "Docker", "Vercel", "GitHub Actions"],
   tools: [
-    "VS Code", "Git", "GitHub", "GitLab", "Bitbucket", "Postman", "Figma",  "Jest", "Windows",
+    "VS Code",
+    "Git",
+    "GitHub",
+    "GitLab",
+    "Bitbucket",
+    "Postman",
+    "Figma",
+    "Jest",
+    "Windows",
   ],
 };
 
 export const PROJECTS = [
   {
     name: "task-manager-api-ts",
-    description: " A production-ready Task Manager REST API built with TypeScript, Express, PostgreSQL, Prisma, and Redis — featuring secure auth, role-based access, task management, comments, user controls, and Cloudinary uploads.",
-    tech: ["Node.js", "TypeScript","JWT","Redis","PostgreSQL","Prisma ORM","argon2","Cloudinary","Jest + Supertest"],
+    description:
+      " A production-ready Task Manager REST API built with TypeScript, Express, PostgreSQL, Prisma, and Redis — featuring secure auth, role-based access, task management, comments, user controls, and Cloudinary uploads.",
+    tech: [
+      "Node.js",
+      "TypeScript",
+      "JWT",
+      "Redis",
+      "PostgreSQL",
+      "Prisma ORM",
+      "argon2",
+      "Cloudinary",
+      "Jest + Supertest",
+    ],
     link: "",
     github: "https://github.com/shasbinas/task-manager-api-ts",
   },
   {
     name: "ChronoRoyale-Ecommerce-WebApp",
-    description: "ChronoRoyale is built to deliver a modern e-commerce experience specifically for luxury watches. Users can browse, wishlist, add to cart, and place orders. Admins can manage products, users, and orders with ease.",
-    tech: ["Node.js","JavaScript", "Bootstrap 5","Handlebars","Chart.js","Express.js","Multer","MongoDBAtlas","JWT",],
+    description:
+      "ChronoRoyale is built to deliver a modern e-commerce experience specifically for luxury watches. Users can browse, wishlist, add to cart, and place orders. Admins can manage products, users, and orders with ease.",
+    tech: [
+      "Node.js",
+      "JavaScript",
+      "Bootstrap 5",
+      "Handlebars",
+      "Chart.js",
+      "Express.js",
+      "Multer",
+      "MongoDBAtlas",
+      "JWT",
+    ],
     link: "https://chronoroyale-ecommerce-webapp.onrender.com",
     github: "https://github.com/shasbinas/ChronoRoyale-Ecommerce-WebApp.git",
   },
@@ -84,7 +124,16 @@ export const EXPERIENCE = [
     description: "Describe your responsibilities and achievements.",
     skills: ["React", "Node.js", "XXXX"],
   },
-  // Add more experience as needed
+  {
+    company: "Another Org",
+    companyLink: "https://example.org/",
+    role: "Backend Engineering Intern",
+    period: "Jun 2024 - Dec 2024",
+    location: "Remote",
+    description:
+      "Placeholder copy for a second experience entry to showcase timeline styling.",
+    skills: ["TypeScript", "Express.js", "PostgreSQL"],
+  },
 ];
 
 export const EDUCATION = [
@@ -97,3 +146,4 @@ export const EDUCATION = [
   },
   // Add more education as needed
 ];
+

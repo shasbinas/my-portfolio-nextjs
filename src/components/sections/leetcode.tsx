@@ -48,25 +48,31 @@ const formatDate = (timestamp: string | number): string => {
 const StatCard = ({
   label,
   value,
-  color = "text-foreground",
+  color = "hsl(var(--foreground))",
 }: {
   label: string;
   value: string;
   color?: string;
 }) => (
-  <div className="box bg-background border border-border flex flex-col items-center justify-center p-2">
-    <span className={`font-bold text-sm ${color}`}>{label}</span>
-    <span className="text-sm text-foreground font-mono font-bold">{value}</span>
+  <div
+    className="rounded-2xl border p-4 flex flex-col gap-1 bg-[hsl(var(--muted)/0.35)]"
+    style={{ borderColor: "hsl(var(--border) / 0.4)" }}
+  >
+    <span className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">
+      {label}
+    </span>
+    <span className="text-base font-mono font-semibold" style={{ color }}>
+      {value}
+    </span>
   </div>
 );
 
 
 export default function LeetCodeCard() {
-
   const [stats, setStats] = useState<LeetCodeStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  
+
   useEffect(() => {
     fetchLeetCodeStats(USER_NAMES.leetcodeUsername)
       .then(setStats)
@@ -78,103 +84,97 @@ export default function LeetCodeCard() {
     return null;
   }
 
-  // Loading and error states
   if (loading) {
     return (
-      <div className="text-center py-8 text-lg text-gray-500 animate-pulse">
-        Loading LeetCode stats...
-      </div>
+      <section className="py-6">
+        <div className="glass-panel text-center text-sm text-muted-foreground animate-pulse">
+          Loading LeetCode stats...
+        </div>
+      </section>
     );
   }
 
   if (error || !stats) {
     return (
-      <div className="text-red-500 text-center py-8">
-        {error || "No data found."}
-      </div>
+      <section className="py-6">
+        <div className="glass-panel text-center text-sm text-red-400">
+          {error || "No data found."}
+        </div>
+      </section>
     );
   }
 
   return (
-    <section className="py-5" id="leetcode">
-      <h2 className="text-xl font-semibold mb-4">leetcode.</h2>
+    <section className="py-6 space-y-4" id="leetcode">
+      <h2 className="section-title">leetcode.</h2>
 
-      {/* LeetCode Profile Link */}
-      <div className="mb-4 flex items-center gap-2">
-        <Link
-          href={SOCIAL_LINKS.leetcode}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-link text-sm font-mono font-medium text-muted-foreground transition-colors flex items-center gap-1"
-        >
-          <SiLeetcode
-            className="inline-block align-middle mr-1 text-yellow-500"
-            size={16}
-          />
-          {USER_NAMES.leetcodeUsername}
-          <MdOutlineArrowOutward className="inline-block w-4 h-4 ml-1" />
-        </Link>
-      </div>
-
-      {/* LeetCode Stats */}
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 max-w-5xl w-full">
-        {/* Stats Overview */}
-        <div className="lg:col-span-3 w-full flex flex-col gap-4 pl-0 lg:pl-2">
-          <div className="grid grid-cols-2 gap-3 w-full">
-            <StatCard
-              label="Solved"
-              value={`${stats.totalSolved} / ${stats.totalQuestions}`}
-            />
-            <StatCard label="Rank" value={`# ${stats.ranking}`} />
-          </div>
-          <div className="grid grid-cols-3 gap-3 w-full">
-            <StatCard
-              label="Easy"
-              value={`${stats.easySolved} / ${stats.totalEasy}`}
-              color="text-green-600"
-            />
-            <StatCard
-              label="Medium"
-              value={`${stats.mediumSolved} / ${stats.totalMedium}`}
-              color="text-yellow-500"
-            />
-            <StatCard
-              label="Hard"
-              value={`${stats.hardSolved} / ${stats.totalHard}`}
-              color="text-red-500"
-            />
-          </div>
+      <div className="glass-panel hover-lift space-y-5">
+        <div className="flex items-center gap-2 text-sm font-mono text-muted-foreground">
+          <Link
+            href={SOCIAL_LINKS.leetcode}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 hover:text-[hsl(var(--border-hover))]"
+          >
+            <SiLeetcode className="w-4 h-4 text-yellow-400" />
+            {USER_NAMES.leetcodeUsername}
+            <MdOutlineArrowOutward className="w-4 h-4" />
+          </Link>
         </div>
 
-        {/* Recent Submissions */}
-        <div className="lg:col-span-2 w-full flex flex-col h-full pr-0 lg:pr-2">
-          <div className="box bg-background border border-border rounded-lg px-4 py-2 flex flex-col h-full justify-start">
-            <span className="text-foreground font-semibold text-sm mb-2 block">
-              Recent Submissions
-            </span>
-            <div className="flex flex-col gap-2">
-              {stats.recentSubmissions && stats.recentSubmissions.length > 0 ? (
-                stats.recentSubmissions.slice(0, 4).map((sub, idx) => (
-                  <div
-                    key={idx}
-                    className="flex flex-row items-center justify-between w-full gap-2 min-w-0"
-                  >
-                    <span className="font-mono text-xs text-foreground truncate whitespace-nowrap flex-1">
-                      {sub.title}
-                    </span>
-                    <span className="text-xs text-muted-foreground flex-shrink-0">
-                      {sub.statusDisplay}
-                    </span>
-                    <span className="text-xs text-muted-foreground flex-shrink-0">
-                      {formatDate(sub.timestamp)}
-                    </span>
-                  </div>
-                ))
-              ) : (
-                <span className="text-xs text-muted-foreground">
-                  No recent submissions
-                </span>
-              )}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 w-full">
+          <div className="lg:col-span-3 flex flex-col gap-4">
+            <div className="grid grid-cols-2 gap-3">
+              <StatCard
+                label="Solved"
+                value={`${stats.totalSolved} / ${stats.totalQuestions}`}
+              />
+              <StatCard label="Rank" value={`# ${stats.ranking}`} />
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              <StatCard
+                label="Easy"
+                value={`${stats.easySolved} / ${stats.totalEasy}`}
+                color="rgb(74 222 128)"
+              />
+              <StatCard
+                label="Medium"
+                value={`${stats.mediumSolved} / ${stats.totalMedium}`}
+                color="rgb(250 204 21)"
+              />
+              <StatCard
+                label="Hard"
+                value={`${stats.hardSolved} / ${stats.totalHard}`}
+                color="rgb(248 113 113)"
+              />
+            </div>
+          </div>
+
+          <div className="lg:col-span-2 flex flex-col">
+            <div className="rounded-2xl border p-4 bg-[hsl(var(--muted)/0.35)] h-full" style={{ borderColor: "hsl(var(--border) / 0.4)" }}>
+              <span className="text-sm font-semibold text-foreground mb-3 block">
+                Recent Submissions
+              </span>
+              <div className="flex flex-col gap-3">
+                {stats.recentSubmissions && stats.recentSubmissions.length > 0 ? (
+                  stats.recentSubmissions.slice(0, 4).map((sub, idx) => (
+                    <div
+                      key={idx}
+                      className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground border-b border-dashed border-[hsl(var(--border)/0.4)] pb-2 last:border-b-0 last:pb-0"
+                    >
+                      <span className="font-mono text-foreground flex-1 min-w-[140px]">
+                        {sub.title}
+                      </span>
+                      <span>{sub.statusDisplay}</span>
+                      <span>{formatDate(sub.timestamp)}</span>
+                    </div>
+                  ))
+                ) : (
+                  <span className="text-xs text-muted-foreground">
+                    No recent submissions
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import Skills from "@/components/sections/skills";
 import Projects from "@/components/sections/projects";
 import Experience from "@/components/sections/experience";
 import Education from "@/components/sections/education";
+import Achievements from "@/components/sections/achievements";
 import Github from "@/components/sections/github";
 import LeetCode from "@/components/sections/leetcode";
 // import Blog from "@/components/sections/blog";
@@ -15,28 +16,46 @@ import Footer from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <div className="font-sans min-h-screen flex flex-col items-center justify-center relative">
-      {/* Faded Grid Background */}
+    <div className="font-sans min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
       <GridPattern />
+      <div className="aurora-glow" aria-hidden />
 
-      <main className="relative z-10 max-w-3xl w-full mx-auto px-4 sm:px-6 md:px-8">
+      <main className="relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-6 md:px-8 pb-16 space-y-10">
         <Navbar />
         <ScrollToTop />
 
-        <section id="header"><Header /></section>
-        <section id="about"><AboutMe /></section>
-        <section id="skills"><Skills /></section>
-        <section id="projects"><Projects /></section>
-        <section id="experience"><Experience /></section>
-        <section id="education"><Education /></section>
-        <section id="github"><Github /></section>
-        <section id="leetcode"><LeetCode /></section>
-      
-        <section id="contact"><Contact /></section>
-        
+        <section id="header">
+          <Header />
+        </section>
+        <section id="about">
+          <AboutMe />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="github">
+          <Github />
+        </section>
+           <section id="leetcode">
+          <LeetCode />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="achievements">
+          <Achievements />
+        </section>
+        <section id="experience">
+          <Experience />
+        </section>
+        <section id="education">
+          <Education />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
         <Footer />
       </main>
-
     </div>
   );
 }

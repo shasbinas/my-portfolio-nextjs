@@ -4,60 +4,48 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 
 export default function Experience() {
   return (
-    <section className="py-5">
-      <h2 className="text-xl mb-4 font-semibold">work experience.</h2>
+    <section className="py-6 space-y-4">
+      <div className="flex flex-col gap-2">
+        <h2 className="section-title">work experience.</h2>
+        <p className="text-sm text-muted-foreground max-w-2xl">
+          Collaborating with teams to ship resilient platforms, streamline developer workflows,
+          and ship products with a focus on security, scale, and craft.
+        </p>
+      </div>
 
-      <div className="space-y-6 relative">
-        {/* Single continuous vertical line */}
-        <div className="absolute left-0 top-0 -bottom-6 w-px bg-accent"></div>
-
+      <div className="grid gap-5">
         {EXPERIENCE.map((exp, index) => (
-          <div key={index} className="relative">
-            {/* Solid dot */}
-            <span className="absolute -left-3 -top-0 bg-muted rounded-full w-6 h-6 flex items-center justify-center z-10">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-            </span>
-
-            <div className="space-y-3 pl-4">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                <div className="space-y-1">
-                  <h3 className="font-medium text-base">{exp.role}</h3>
-                  <p className="text-sm text-muted-foreground">
-                    <Link
-                      href={exp.companyLink || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link"
-                    >
-                      {exp.company}
-                      <MdOutlineArrowOutward className="inline-block w-4 h-4 ml-1" />
-                    </Link>
-                  </p>
-                </div>
-                <div className="flex flex-col text-left sm:text-right">
-                  <span className="text-sm text-muted-foreground font-mono">
-                    {exp.period}
-                  </span>
-                  <span className="text-sm text-muted-foreground font-mono">
-                    {exp.location}
-                  </span>
-                </div>
+          <div key={index} className="tilt-card p-6 space-y-4">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
+                  {exp.period}
+                </p>
+                <h3 className="text-xl font-semibold mt-1">{exp.role}</h3>
+                <Link
+                  href={exp.companyLink || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-[hsl(var(--border-hover))]"
+                >
+                  {exp.company}
+                  <MdOutlineArrowOutward className="w-4 h-4" />
+                </Link>
               </div>
 
-              <p className="text-sm text-muted-foreground leading-relaxed text-justify">
-                {exp.description}
-              </p>
+              <span className="text-xs font-mono uppercase tracking-[0.3em] text-muted-foreground">
+                {exp.location}
+              </span>
+            </div>
 
-              <div className="flex flex-wrap gap-1.5">
-                {exp.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2 py-1 text-xs rounded-md badge text-foreground"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+
+            <div className="flex flex-wrap gap-1.5">
+              {exp.skills.map((skill) => (
+                <span key={skill} className="badge-chip">
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
         ))}
