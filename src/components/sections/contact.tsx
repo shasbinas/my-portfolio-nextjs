@@ -107,7 +107,6 @@ const Contact = () => {
           <div className="space-y-3">
             {contactLinks.map((item) => {
               const Icon = item.icon;
-              const isMailLink = item.href?.startsWith("mailto:");
               const content = (
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent)/0.15)] flex items-center justify-center">
@@ -122,32 +121,32 @@ const Contact = () => {
                 </div>
               );
 
-              if (item.href && !isMailLink) {
+              if (item.href) {
+                const isMailLink = item.href.startsWith("mailto:");
+                const isExternal = item.href.startsWith("http");
+                if (isMailLink) {
+                  return (
+                    <button
+                      key={item.label}
+                      type="button"
+                      onClick={handleEmailLaunch}
+                      className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 text-left transition-colors hover:border-[hsl(var(--border)/0.6)]"
+                    >
+                      {content}
+                    </button>
+                  );
+                }
+
                 return (
                   <a
                     key={item.label}
                     href={item.href}
-                    target={item.href.startsWith("http") ? "_blank" : undefined}
-                    rel={
-                      item.href.startsWith("http") ? "noopener noreferrer" : undefined
-                    }
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
                     className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 transition-colors hover:border-[hsl(var(--border)/0.6)]"
                   >
                     {content}
                   </a>
-                );
-              }
-
-              if (item.href && isMailLink) {
-                return (
-                  <button
-                    key={item.label}
-                    type="button"
-                    onClick={handleEmailLaunch}
-                    className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 text-left transition-colors hover:border-[hsl(var(--border)/0.6)]"
-                  >
-                    {content}
-                  </button>
                 );
               }
 

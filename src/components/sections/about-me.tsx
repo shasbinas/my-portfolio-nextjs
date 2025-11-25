@@ -47,15 +47,15 @@ const SOCIAL_BUTTONS = [
   },
 ];
 
-const handleDirectLaunch = (href: string) => {
-  if (!href) return;
-  const sanitizedHref = href.trim();
+const launchLink = (rawHref: string) => {
+  if (!rawHref) return;
   if (typeof window === "undefined") return;
 
-  if (sanitizedHref.startsWith("mailto:") || sanitizedHref.startsWith("tel:")) {
-    window.location.href = sanitizedHref;
+  const href = rawHref.trim();
+  if (href.startsWith("mailto:") || href.startsWith("tel:")) {
+    window.location.href = href;
   } else {
-    window.open(sanitizedHref, "_blank", "noopener,noreferrer");
+    window.open(href, "_blank", "noopener,noreferrer");
   }
 };
 
@@ -75,22 +75,29 @@ export default function AboutMe() {
         <div className="flex gap-3 flex-wrap">
           {SOCIAL_BUTTONS.filter(
             (btn) => btn.href && btn.href.trim() !== ""
-          ).map((btn) => (
-            btn.href.startsWith("mailto:") ? (
-              <button
-                key={btn.label}
-                type="button"
-                onClick={() => handleDirectLaunch(btn.href)}
-                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
-                style={{ borderColor: "hsl(var(--border) / 0.6)" }}
-                aria-label={btn.label}
-              >
-                {btn.icon}
-              </button>
-            ) : (
+          ).map((btn) => {
+            const href = btn.href.trim();
+            const isExternal = href.startsWith("http");
+
+            if (!isExternal) {
+              return (
+                <button
+                  key={btn.label}
+                  type="button"
+                  onClick={() => launchLink(href)}
+                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
+                  style={{ borderColor: "hsl(var(--border) / 0.6)" }}
+                  aria-label={btn.label}
+                >
+                  {btn.icon}
+                </button>
+              );
+            }
+
+            return (
               <Link
                 key={btn.label}
-                href={btn.href}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
@@ -99,8 +106,8 @@ export default function AboutMe() {
               >
                 {btn.icon}
               </Link>
-            )
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
