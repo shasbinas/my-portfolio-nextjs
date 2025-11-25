@@ -4,7 +4,7 @@
 export const ABOUT_ME = {
   name: "Shasbin AS",
   title: "Backend Developer",
-  location: "Kerala",
+  location: "Irinjalakuda, Thrissur, Kerala, India",
   email: "shasbinas1@gmail.com",
   description: [
     "Hi, I’m Shasbin A.S, a backend developer with a strong focus on building reliable, scalable, and secure server-side applications. I enjoy solving complex problems and turning ideas into efficient APIs and systems.",
@@ -66,7 +66,6 @@ export const SKILLS = {
     "Git",
     "GitHub",
     "GitLab",
-    "Bitbucket",
     "Postman",
     "Figma",
     "Jest",
@@ -115,15 +114,6 @@ export const PROJECTS = [
 ];
 
 export const EXPERIENCE = [
-  {
-    company: "Company Name",
-    companyLink: "https://companyname.com/",
-    role: "Software Developer",
-    period: "Jan 2025 - Present",
-    location: "Remote/Location",
-    description: "Describe your responsibilities and achievements.",
-    skills: ["React", "Node.js", "XXXX"],
-  },
   {
     company: "Another Org",
     companyLink: "https://example.org/",
