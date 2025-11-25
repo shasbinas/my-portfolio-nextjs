@@ -33,7 +33,7 @@ const useISTTime = () => {
     const updateTime = () => {
       const timeString = new Date().toLocaleTimeString("en-IN", {
         timeZone: "Asia/Kolkata",
-        hour12: false,
+        hour12: true,
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
@@ -89,10 +89,14 @@ const VerifiedBadge = ({ showTooltip, setShowTooltip }: VerifiedBadgeProps) => (
     onMouseEnter={() => setShowTooltip(true)}
     onMouseLeave={() => setShowTooltip(false)}
   >
-    <span className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1 text-xs uppercase tracking-[0.3em] text-muted-foreground">
-      <MdVerified className="w-4 h-4 text-[hsl(var(--border-hover))]" />
+    <button
+      type="button"
+      className="inline-flex items-center gap-1 rounded-full border border-blue-400/70 bg-blue-600/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-lg transition-all hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+      aria-pressed="true"
+    >
+      <MdVerified className="w-4 h-4 text-white" />
       verified
-    </span>
+    </button>
     {showTooltip && (
       <div className="absolute -top-14 left-1/2 -translate-x-1/2 bg-black/90 text-white text-xs px-3 py-1 rounded-full whitespace-nowrap shadow-2xl border border-border">
         npm verified · human@latest
@@ -108,8 +112,9 @@ const LocationTime = ({ currentTime }: LocationTimeProps) => (
       <span className="font-mono uppercase tracking-wide">{ABOUT_ME.location}</span>
     </div>
     <div className="contact-card font-mono text-foreground">
-      {currentTime} IST
+      {currentTime ? `${currentTime} IST` : "Loading IST..."}
     </div>
+    <span className="text-xs text-muted-foreground">Asia/Kolkata · UTC+05:30</span>
   </div>
 );
 
@@ -154,10 +159,12 @@ const Header = () => {
             <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
               availability
             </p>
-            <p className="font-semibold">Open to remote collabs</p>
+            <p className="font-semibold">
+              Open to remote collabs · 9:00 AM - 7:00 PM IST
+            </p>
           </div>
           <div className="contact-card">
-            <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
+            <p className="text-blue-500 uppercase tracking-[0.3em] text-[0.6rem] mb-1">
               speciality
             </p>
             <p className="font-semibold">Backend systems & secure APIs</p>
@@ -166,7 +173,10 @@ const Header = () => {
             <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
               timezone
             </p>
-            <p className="font-semibold">IST · UTC+05:30</p>
+            <p className="font-semibold">
+              {currentTime ? `${currentTime} IST` : "Loading IST..."}
+            </p>
+            <p className="text-xs text-muted-foreground">Asia/Kolkata · UTC+05:30</p>
           </div>
         </div>
       </div>

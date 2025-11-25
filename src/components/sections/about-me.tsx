@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ABOUT_ME, SOCIAL_LINKS } from "@/components/constants/data";
 import { Mail, FileText } from "lucide-react";
@@ -45,6 +47,18 @@ const SOCIAL_BUTTONS = [
   },
 ];
 
+const handleDirectLaunch = (href: string) => {
+  if (!href) return;
+  const sanitizedHref = href.trim();
+  if (typeof window === "undefined") return;
+
+  if (sanitizedHref.startsWith("mailto:") || sanitizedHref.startsWith("tel:")) {
+    window.location.href = sanitizedHref;
+  } else {
+    window.open(sanitizedHref, "_blank", "noopener,noreferrer");
+  }
+};
+
 // =============================================
 // MAIN COMPONENT
 // =============================================
@@ -62,17 +76,30 @@ export default function AboutMe() {
           {SOCIAL_BUTTONS.filter(
             (btn) => btn.href && btn.href.trim() !== ""
           ).map((btn) => (
-            <Link
-              key={btn.label}
-              href={btn.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
-              style={{ borderColor: "hsl(var(--border) / 0.6)" }}
-              aria-label={btn.label}
-            >
-              {btn.icon}
-            </Link>
+            btn.href.startsWith("mailto:") ? (
+              <button
+                key={btn.label}
+                type="button"
+                onClick={() => handleDirectLaunch(btn.href)}
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
+                style={{ borderColor: "hsl(var(--border) / 0.6)" }}
+                aria-label={btn.label}
+              >
+                {btn.icon}
+              </button>
+            ) : (
+              <Link
+                key={btn.label}
+                href={btn.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
+                style={{ borderColor: "hsl(var(--border) / 0.6)" }}
+                aria-label={btn.label}
+              >
+                {btn.icon}
+              </Link>
+            )
           ))}
         </div>
       </div>

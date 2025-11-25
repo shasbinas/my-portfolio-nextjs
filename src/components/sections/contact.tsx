@@ -23,6 +23,10 @@ type ContactLink = {
 const Contact = () => {
   const emailAddress =
     SOCIAL_LINKS.email?.replace("mailto:", "") || ABOUT_ME.email;
+  const emailHref =
+    SOCIAL_LINKS.email && SOCIAL_LINKS.email.trim() !== ""
+      ? SOCIAL_LINKS.email.trim()
+      : `mailto:${ABOUT_ME.email}`;
   const [copied, setCopied] = useState(false);
   const whatsappLink = SOCIAL_LINKS.whatsapp;
 
@@ -75,6 +79,11 @@ const Contact = () => {
     }
   };
 
+  const handleEmailLaunch = () => {
+    if (typeof window === "undefined" || !emailHref) return;
+    window.location.href = emailHref;
+  };
+
   const handleOpenWhatsApp = () => {
     if (whatsappLink) {
       window.open(whatsappLink, "_blank", "noopener,noreferrer");
@@ -83,7 +92,7 @@ const Contact = () => {
 
   return (
     <section className="py-6 space-y-4">
-      <h2 className="section-title">let&apos;s connect.</h2>
+      <h2 className="section-title w-full">let&apos;s connect.</h2>
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="glass-panel p-6 space-y-6">
@@ -98,6 +107,7 @@ const Contact = () => {
           <div className="space-y-3">
             {contactLinks.map((item) => {
               const Icon = item.icon;
+              const isMailLink = item.href?.startsWith("mailto:");
               const content = (
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent)/0.15)] flex items-center justify-center">
@@ -112,17 +122,36 @@ const Contact = () => {
                 </div>
               );
 
-              return item.href ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 transition-colors hover:border-[hsl(var(--border)/0.6)]"
-                >
-                  {content}
-                </a>
-              ) : (
+              if (item.href && !isMailLink) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={
+                      item.href.startsWith("http") ? "noopener noreferrer" : undefined
+                    }
+                    className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 transition-colors hover:border-[hsl(var(--border)/0.6)]"
+                  >
+                    {content}
+                  </a>
+                );
+              }
+
+              if (item.href && isMailLink) {
+                return (
+                  <button
+                    key={item.label}
+                    type="button"
+                    onClick={handleEmailLaunch}
+                    className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 text-left transition-colors hover:border-[hsl(var(--border)/0.6)]"
+                  >
+                    {content}
+                  </button>
+                );
+              }
+
+              return (
                 <div
                   key={item.label}
                   className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3"
@@ -167,6 +196,14 @@ const Contact = () => {
                   {copied ? "Copied" : "Copy"}
                 </button>
               </div>
+              <button
+                type="button"
+                onClick={handleEmailLaunch}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[hsl(var(--accent))] text-[hsl(var(--background))] text-sm font-semibold py-3 transition hover:bg-[hsl(var(--accent)/0.9)]"
+              >
+                <Mail className="w-4 h-4" />
+                Send Email
+              </button>
             </div>
           </div>
 

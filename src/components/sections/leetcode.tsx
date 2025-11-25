@@ -54,10 +54,7 @@ const StatCard = ({
   value: string;
   color?: string;
 }) => (
-  <div
-    className="rounded-2xl border p-4 flex flex-col gap-1 bg-[hsl(var(--muted)/0.35)]"
-    style={{ borderColor: "hsl(var(--border) / 0.4)" }}
-  >
+  <div className="tilt-card p-4 flex flex-col gap-1 min-h-[110px]">
     <span className="text-[0.65rem] uppercase tracking-[0.3em] text-muted-foreground">
       {label}
     </span>
@@ -106,7 +103,7 @@ export default function LeetCodeCard() {
 
   return (
     <section className="py-6 space-y-4" id="leetcode">
-      <h2 className="section-title">leetcode.</h2>
+      <h2 className="section-title w-full">leetcode.</h2>
 
       <div className="glass-panel hover-lift space-y-5">
         <div className="flex items-center gap-2 text-sm font-mono text-muted-foreground">
@@ -151,8 +148,8 @@ export default function LeetCodeCard() {
           </div>
 
           <div className="lg:col-span-2 flex flex-col">
-            <div className="rounded-2xl border p-4 bg-[hsl(var(--muted)/0.35)] h-full" style={{ borderColor: "hsl(var(--border) / 0.4)" }}>
-              <span className="text-sm font-semibold text-foreground mb-3 block">
+            <div className="tilt-card p-4 h-full space-y-3">
+              <span className="text-sm font-semibold text-foreground block">
                 Recent Submissions
               </span>
               <div className="flex flex-col gap-3">

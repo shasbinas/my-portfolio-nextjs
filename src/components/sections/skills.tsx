@@ -91,7 +91,7 @@ const SkillBadge = ({ skill }: { skill: string }) => (
 const Skills = () => {
   return (
     <section className="py-6 space-y-4">
-      <h2 className="section-title">technical skills.</h2>
+      <h2 className="section-title w-full">technical skills.</h2>
       <div className="glass-panel hover-lift space-y-5">
         {Object.entries(SKILLS).map(([key, skills]) => (
           <div
