@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import {
   Mail,
   Github,
@@ -79,14 +79,24 @@ const Contact = () => {
     }
   };
 
-  const handleEmailLaunch = () => {
-    if (typeof window === "undefined" || !emailHref) return;
-    window.location.href = emailHref;
-  };
-
   const handleOpenWhatsApp = () => {
     if (whatsappLink) {
       window.open(whatsappLink, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleSpecialNavigation = (
+    event: MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (!href) return;
+    const trimmed = href.trim();
+    if (
+      typeof window !== "undefined" &&
+      (trimmed.startsWith("mailto:") || trimmed.startsWith("tel:"))
+    ) {
+      event.preventDefault();
+      window.location.href = trimmed;
     }
   };
 
@@ -116,7 +126,9 @@ const Contact = () => {
                     <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
                       {item.label}
                     </p>
-                    <p className="text-sm font-medium break-all">{item.value}</p>
+                    <p className="text-sm font-mono text-foreground break-all">
+                      {item.value}
+                    </p>
                   </div>
                 </div>
               );
@@ -126,14 +138,14 @@ const Contact = () => {
                 const isExternal = item.href.startsWith("http");
                 if (isMailLink) {
                   return (
-                    <button
+                    <a
                       key={item.label}
-                      type="button"
-                      onClick={handleEmailLaunch}
+                      href={item.href}
+                      onClick={(event) => handleSpecialNavigation(event, item.href!)}
                       className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 text-left transition-colors hover:border-[hsl(var(--border)/0.6)]"
                     >
                       {content}
-                    </button>
+                    </a>
                   );
                 }
 
@@ -195,14 +207,14 @@ const Contact = () => {
                   {copied ? "Copied" : "Copy"}
                 </button>
               </div>
-              <button
-                type="button"
-                onClick={handleEmailLaunch}
+              <a
+                href={emailHref}
+                onClick={(event) => handleSpecialNavigation(event, emailHref)}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[hsl(var(--accent))] text-[hsl(var(--background))] text-sm font-semibold py-3 transition hover:bg-[hsl(var(--accent)/0.9)]"
               >
                 <Mail className="w-4 h-4" />
                 Send Email
-              </button>
+              </a>
             </div>
           </div>
 

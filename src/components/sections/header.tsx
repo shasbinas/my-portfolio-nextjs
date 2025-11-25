@@ -156,7 +156,7 @@ const Header = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
           <div className="contact-card">
-            <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
+            <p className="text-blue-500 uppercase tracking-[0.3em] text-[0.6rem] mb-1">
               availability
             </p>
             <p className="font-semibold">
@@ -170,7 +170,7 @@ const Header = () => {
             <p className="font-semibold">Backend systems & secure APIs</p>
           </div>
           <div className="contact-card">
-            <p className="text-muted-foreground uppercase tracking-[0.3em] text-[0.6rem] mb-1">
+            <p className="text-blue-500 uppercase tracking-[0.3em] text-[0.6rem] mb-1">
               timezone
             </p>
             <p className="font-semibold">

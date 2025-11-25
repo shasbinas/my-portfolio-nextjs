@@ -47,15 +47,18 @@ const SOCIAL_BUTTONS = [
   },
 ];
 
-const launchLink = (rawHref: string) => {
-  if (!rawHref) return;
-  if (typeof window === "undefined") return;
-
-  const href = rawHref.trim();
-  if (href.startsWith("mailto:") || href.startsWith("tel:")) {
-    window.location.href = href;
-  } else {
-    window.open(href, "_blank", "noopener,noreferrer");
+const handleSpecialNavigation = (
+  event: React.MouseEvent<HTMLAnchorElement>,
+  href: string
+) => {
+  if (!href) return;
+  const trimmed = href.trim();
+  if (
+    typeof window !== "undefined" &&
+    (trimmed.startsWith("mailto:") || trimmed.startsWith("tel:"))
+  ) {
+    event.preventDefault();
+    window.location.href = trimmed;
   }
 };
 
@@ -79,33 +82,35 @@ export default function AboutMe() {
             const href = btn.href.trim();
             const isExternal = href.startsWith("http");
 
-            if (!isExternal) {
+            const isSpecial = href.startsWith("mailto:") || href.startsWith("tel:");
+
+            if (isExternal) {
               return (
-                <button
+                <Link
                   key={btn.label}
-                  type="button"
-                  onClick={() => launchLink(href)}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
                   style={{ borderColor: "hsl(var(--border) / 0.6)" }}
                   aria-label={btn.label}
                 >
                   {btn.icon}
-                </button>
+                </Link>
               );
             }
 
             return (
-              <Link
+              <a
                 key={btn.label}
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                onClick={(event) => isSpecial && handleSpecialNavigation(event, href)}
                 className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
                 style={{ borderColor: "hsl(var(--border) / 0.6)" }}
                 aria-label={btn.label}
               >
                 {btn.icon}
-              </Link>
+              </a>
             );
           })}
         </div>
