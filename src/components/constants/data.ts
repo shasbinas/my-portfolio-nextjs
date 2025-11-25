@@ -114,16 +114,29 @@ export const PROJECTS = [
 ];
 
 export const EXPERIENCE = [
-  {
-    company: "Another Org",
-    companyLink: "https://example.org/",
-    role: "Backend Engineering Intern",
-    period: "Jun 2024 - Dec 2024",
-    location: "Remote",
-    description:
-      "Placeholder copy for a second experience entry to showcase timeline styling.",
-    skills: ["TypeScript", "Express.js", "PostgreSQL"],
-  },
+ {
+  company: "G-Tec Computer Education",
+  companyLink: "",
+  role: "Full Stack Development Intern",
+  period: "Jun 2025 - Feb 2026 (Expected)",
+  location: "Onsite",
+  description:
+    "Working on full-stack development with a focus on backend engineering. Building secure RESTful APIs, implementing caching and session management with Redis, designing scalable architectures, and integrating relational and NoSQL databases. Gaining hands-on experience with containerization, API performance optimization, and modern JavaScript development workflows.",
+  skills: [
+    "Node.js",
+    "Express.js",
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "PostgreSQL",
+    "MongoDB",
+    "Redis",
+    "Docker",
+    "REST APIs",
+    "Backend Architecture"
+  ],
+}
+
 ];
 
 export const EDUCATION = [
@@ -148,13 +161,7 @@ export const EDUCATION = [
     period: "Jul 2020 - Mar 2021",
   
   },
-    {
-    degree: "Full Stack Developer",
-    institution: "G-Tec Computer Education ",
-    // institutionLink: "https://www.yenepoya.edu.in/",
-    period: "Jul 2025  - Feb 2026 Expected",
-  
-  },
+   
   // Add more education as needed
 ];
 
