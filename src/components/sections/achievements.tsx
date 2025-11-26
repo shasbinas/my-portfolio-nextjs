@@ -11,7 +11,7 @@ const PLACEHOLDER_BADGES = [
     title: "50 Days Badge",
     platform: "LeetCode",
     description: "Solved problems for 50 consecutive days",
-    imagePath: "https://assets.leetcode.com/static_assets/marketing/2024-50.gif"
+    imagePath: "https://assets.leetcode.com/static_assets/others/2550.gif"
   },
   {
     title: "100 Days Badge",
