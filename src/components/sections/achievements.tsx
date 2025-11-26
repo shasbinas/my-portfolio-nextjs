@@ -2,24 +2,52 @@
 
 const PLACEHOLDER_BADGES = [
   {
-    title: "Open Source Galaxy",
+    title: "GitHub Foundations",
     platform: "GitHub",
-    description: "Replace with your GitHub badge / trophy",
+    description: "GitHub Foundations certification",
+    imagePath: "https://images.credly.com/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png"
   },
   {
-    title: "Contest Crusher",
+    title: "50 Days Badge",
     platform: "LeetCode",
-    description: "Swap in your contest or streak badge",
+    description: "Solved problems for 50 consecutive days",
+    imagePath: "https://assets.leetcode.com/static_assets/marketing/2024-50.gif"
   },
   {
-    title: "API Specialist",
+    title: "100 Days Badge",
+    platform: "LeetCode",
+    description: "Solved problems for 100 consecutive days",
+    imagePath: "https://assets.leetcode.com/static_assets/marketing/2024-100.gif"
+  },
+  {
+    title: "Pull Shark",
     platform: "GitHub",
-    description: "Add a workflow / contribution badge",
+    description: "Opened pull requests that have been merged",
+    imagePath: "https://github.githubassets.com/images/modules/profile/achievements/pull-shark-default.png"
   },
   {
-    title: "DSA Marathon",
-    platform: "LeetCode",
-    description: "Paste any LeetCode milestone badge",
+    title: "Quickdraw",
+    platform: "GitHub",
+    description: "Closed an issue or pull request within 5 minutes",
+    imagePath: "https://github.githubassets.com/images/modules/profile/achievements/quickdraw-default.png"
+  },
+  {
+    title: "YOLO",
+    platform: "GitHub",
+    description: "Merged a pull request without code review",
+    imagePath: "https://github.githubassets.com/images/modules/profile/achievements/yolo-default.png"
+  },
+  {
+    title: "Starstruck",
+    platform: "GitHub",
+    description: "Created a repository that has 16+ stars",
+    imagePath: "https://github.githubassets.com/images/modules/profile/achievements/starstruck-default.png"
+  },
+  {
+    title: "Pair Extraordinaire",
+    platform: "GitHub",
+    description: "Co-authored commits on merged pull requests",
+    imagePath: "https://github.githubassets.com/images/modules/profile/achievements/pair-extraordinaire-default.png"
   },
 ];
 
@@ -27,15 +55,26 @@ const BadgeCard = ({
   title,
   platform,
   description,
+  imagePath,
 }: (typeof PLACEHOLDER_BADGES)[number]) => (
-  <div className="tilt-card p-5 flex flex-col gap-4">
-    <div className="w-full h-48 md:h-56 rounded-2xl border border-dashed border-[hsl(var(--border)/0.6)] bg-gradient-to-br from-[hsl(var(--accent)/0.25)] to-[hsl(var(--accent-secondary)/0.25)] flex items-center justify-center text-xs uppercase tracking-[0.35em] text-muted-foreground font-mono text-center">
-      badge image
+  <div className="tilt-card p-4 flex flex-col gap-3">
+    <div className="w-full h-32 md:h-40 rounded-2xl border border-dashed border-[hsl(var(--border)/0.6)] bg-gradient-to-br from-[hsl(var(--accent)/0.25)] to-[hsl(var(--accent-secondary)/0.25)] flex items-center justify-center overflow-hidden">
+      {imagePath ? (
+        <img 
+          src={imagePath} 
+          alt={title}
+          className="max-w-full max-h-full object-contain p-3"
+        />
+      ) : (
+        <span className="text-xs uppercase tracking-[0.35em] text-muted-foreground font-mono text-center">
+          Badge Image
+        </span>
+      )}
     </div>
-    <div className="space-y-1 text-center md:text-left">
-      <p className="text-base font-semibold">{title}</p>
+    <div className="space-y-1 text-center">
+      <p className="text-sm font-semibold">{title}</p>
       <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">{platform}</p>
-      <p className="text-sm text-muted-foreground">{description}</p>
+      <p className="text-xs text-muted-foreground">{description}</p>
     </div>
   </div>
 );
@@ -59,4 +98,3 @@ export default function Achievements() {
     </section>
   );
 }
-
