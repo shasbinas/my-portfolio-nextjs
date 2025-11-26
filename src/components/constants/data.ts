@@ -144,7 +144,7 @@ export const EDUCATION = [
     degree: "Bachelor of Computer Applications (BCA) – Online Degree",
     institution: " Yenepoya University",
     institutionLink: "https://www.yenepoya.edu.in/",
-    period: "Oct 2025 - 2028 Jan Expected",
+    period: "Oct 2025 - Jan 2028  Expected",
     
   },
    {
