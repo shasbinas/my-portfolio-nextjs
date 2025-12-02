@@ -5,7 +5,7 @@ export const ABOUT_ME = {
   name: "Shasbin AS",
   title: "Backend Developer",
   location: "Irinjalakuda, Thrissur, Kerala, India",
-  email: "shasbinas1@gmail.com",
+  email: "shasbin.official@gmail.com",
   description: [
     "Hi, I’m Shasbin A.S, a backend developer with a strong focus on building reliable, scalable, and secure server-side applications. I enjoy solving complex problems and turning ideas into efficient APIs and systems.",
     "I’m passionate about developing secure authentication flows, robust RESTful APIs, and intelligent data-driven applications. I enjoy crafting backend systems that are scalable, maintainable, and built with clean, modern architecture.",
@@ -27,7 +27,7 @@ export const SOCIAL_LINKS = {
   leetcode: "https://leetcode.com/shasbinas",
   // peerlist: "https://peerlist.io/your-peerlist", // remove or keep blank if you don't have a Peerlist profile
   instagram: "",
-  email: "mailto:shasbinas1@gmail.com",
+  email: "mailto:shasbin.official@gmail.com",
   // blog: "https://yourblog.com", // remove if you don't have a blog
   resume:
     "https://drive.google.com/file/d/1lf2eQpjK10k9CFMpI7HCLGmskxRb3hdT/view?usp=sharing",

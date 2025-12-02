@@ -83,25 +83,9 @@ const ProfileImage = ({ isHovering, setIsHovering }: ProfileImageProps) => (
   </div>
 );
 
-const VerifiedBadge = ({ showTooltip, setShowTooltip }: VerifiedBadgeProps) => (
-  <div
-    className="relative"
-    onMouseEnter={() => setShowTooltip(true)}
-    onMouseLeave={() => setShowTooltip(false)}
-  >
-    <button
-      type="button"
-      className="inline-flex items-center gap-1 rounded-full border border-blue-400/70 bg-blue-600/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white shadow-lg transition-all hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-      aria-pressed="true"
-    >
-      <MdVerified className="w-4 h-4 text-white" />
-      verified
-    </button>
-    {showTooltip && (
-      <div className="absolute -top-14 left-1/2 -translate-x-1/2 bg-black/90 text-white text-xs px-3 py-1 rounded-full whitespace-nowrap shadow-2xl border border-border">
-        npm verified · human@latest
-      </div>
-    )}
+const VerifiedBadge = () => (
+  <div className="inline-flex items-center">
+    <MdVerified className="w-5 h-5 text-blue-500" />
   </div>
 );
 
@@ -114,7 +98,6 @@ const LocationTime = ({ currentTime }: LocationTimeProps) => (
     <div className="contact-card font-mono text-foreground">
       {currentTime ? `${currentTime} IST` : "Loading IST..."}
     </div>
-    <span className="text-xs text-muted-foreground">Asia/Kolkata · UTC+05:30</span>
   </div>
 );
 

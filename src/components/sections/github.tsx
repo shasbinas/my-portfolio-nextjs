@@ -47,9 +47,12 @@ export default function Github() {
 
     const fetchStats = async () => {
       try {
-        const profilePromise = fetch(`https://api.github.com/users/${username}`, {
-          signal: controller.signal,
-        }).then((res) => res.json());
+        const profilePromise = fetch(
+          `https://api.github.com/users/${username}`,
+          {
+            signal: controller.signal,
+          }
+        ).then((res) => res.json());
 
         const gatherStars = async () => {
           let stars = 0;
@@ -71,7 +74,10 @@ export default function Github() {
           return stars;
         };
 
-        const [profile, stars] = await Promise.all([profilePromise, gatherStars()]);
+        const [profile, stars] = await Promise.all([
+          profilePromise,
+          gatherStars(),
+        ]);
 
         setStats({
           followers: profile?.followers || 0,
@@ -95,7 +101,7 @@ export default function Github() {
   }, [username]);
 
   const pillClasses =
-    "inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/15 px-3 py-1 text-[0.65rem] uppercase tracking-[0.35em] text-blue-200";
+    "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.65rem] uppercase tracking-[0.35em] dark:border-blue-400/30 dark:bg-blue-500/15 border-blue-600/60 bg-blue-50 text-black dark:text-blue-200";
 
   return (
     <section className="py-6 space-y-4" id="github">
@@ -122,13 +128,13 @@ export default function Github() {
             <span className={pillClasses}>activity</span>
             <span className={pillClasses} aria-label="Total followers">
               followers
-              <span className="text-sm font-semibold tracking-normal text-white">
+              <span className="text-sm font-semibold tracking-normal text-blue-600 dark:text-white">
                 {stats.loading ? "…" : stats.followers.toLocaleString()}
               </span>
             </span>
             <span className={pillClasses} aria-label="Total stars">
               total stars
-              <span className="text-sm font-semibold tracking-normal text-white">
+              <span className="text-sm font-semibold tracking-normal text-blue-600 dark:text-white">
                 {stats.loading ? "…" : stats.stars.toLocaleString()}
               </span>
             </span>

@@ -1,5 +1,6 @@
 import GridPattern from "@/components/ui/grid-pattern";
 import ScrollToTop from "@/components/ui/scroll-to-top";
+import GithubStarButton from "@/components/ui/github-star-button";
 import Navbar from "@/components/sections/navbar";
 import Header from "@/components/sections/header";
 import AboutMe from "@/components/sections/about-me";
@@ -23,6 +24,7 @@ export default function Home() {
       <main className="relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-6 md:px-8 pb-16 space-y-10">
         <Navbar />
         <ScrollToTop />
+        <GithubStarButton />
 
         <section id="header">
           <Header />
@@ -36,7 +38,7 @@ export default function Home() {
         <section id="github">
           <Github />
         </section>
-           <section id="leetcode">
+        <section id="leetcode">
           <LeetCode />
         </section>
         <section id="projects">
