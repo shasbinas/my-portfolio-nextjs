@@ -64,7 +64,6 @@ const StatCard = ({
   </div>
 );
 
-
 export default function LeetCodeCard() {
   const [stats, setStats] = useState<LeetCodeStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -77,7 +76,10 @@ export default function LeetCodeCard() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (!USER_NAMES.leetcodeUsername || USER_NAMES.leetcodeUsername.trim() === "") {
+  if (
+    !USER_NAMES.leetcodeUsername ||
+    USER_NAMES.leetcodeUsername.trim() === ""
+  ) {
     return null;
   }
 
@@ -153,7 +155,8 @@ export default function LeetCodeCard() {
                 Recent Submissions
               </span>
               <div className="flex flex-col gap-3">
-                {stats.recentSubmissions && stats.recentSubmissions.length > 0 ? (
+                {stats.recentSubmissions &&
+                stats.recentSubmissions.length > 0 ? (
                   stats.recentSubmissions.slice(0, 4).map((sub, idx) => (
                     <div
                       key={idx}

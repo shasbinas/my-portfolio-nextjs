@@ -114,29 +114,28 @@ export const PROJECTS = [
 ];
 
 export const EXPERIENCE = [
- {
-  company: "G-Tec Computer Education",
-  companyLink: "",
-  role: "Full Stack Development Intern",
-  period: "Jun 2025 - Feb 2026 (Expected)",
-  location: "Onsite",
-  description:
-    "Working on full-stack development with a focus on backend engineering. Building secure RESTful APIs, implementing caching and session management with Redis, designing scalable architectures, and integrating relational and NoSQL databases. Gaining hands-on experience with containerization, API performance optimization, and modern JavaScript development workflows.",
-  skills: [
-    "Node.js",
-    "Express.js",
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "PostgreSQL",
-    "MongoDB",
-    "Redis",
-    "Docker",
-    "REST APIs",
-    "Backend Architecture"
-  ],
-}
-
+  {
+    company: "G-Tec Computer Education",
+    companyLink: "",
+    role: "Full Stack Development Intern",
+    period: "Jun 2025 - Feb 2026 (Expected)",
+    location: "Onsite",
+    description:
+      "Working on full-stack development with a focus on backend engineering. Building secure RESTful APIs, implementing caching and session management with Redis, designing scalable architectures, and integrating relational and NoSQL databases. Gaining hands-on experience with containerization, API performance optimization, and modern JavaScript development workflows.",
+    skills: [
+      "Node.js",
+      "Express.js",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "Docker",
+      "REST APIs",
+      "Backend Architecture",
+    ],
+  },
 ];
 
 export const EDUCATION = [
@@ -145,23 +144,19 @@ export const EDUCATION = [
     institution: " Yenepoya University",
     institutionLink: "https://www.yenepoya.edu.in/",
     period: "Oct 2025 - Jan 2028  Expected",
-    
   },
-   {
+  {
     degree: "Senior Secondary (Plus Two) ",
     institution: "Lbsm Higher Secondary School ",
     // institutionLink: "https://www.yenepoya.edu.in/",
     period: "Jul 2021 - Mar 2023",
-  
   },
-   {
+  {
     degree: "Secondary (SSLC)",
     institution: "Lbsm Higher Secondary School ",
     // institutionLink: "https://www.yenepoya.edu.in/",
     period: "Jul 2020 - Mar 2021",
-  
   },
-   
+
   // Add more education as needed
 ];
-

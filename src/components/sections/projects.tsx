@@ -7,8 +7,9 @@ export default function Projects() {
       <div className="flex flex-col gap-2">
         <h2 className="section-title">featured builds.</h2>
         <p className="text-sm text-muted-foreground max-w-2xl">
-          Shipping polished experiences from rapid prototypes to production-ready systems.
-          Each build blends performance, resilience, and a touch of futurism.
+          Shipping polished experiences from rapid prototypes to
+          production-ready systems. Each build blends performance, resilience,
+          and a touch of futurism.
         </p>
       </div>
 
@@ -17,7 +18,9 @@ export default function Projects() {
           <div key={project.name} className="tilt-card p-5 space-y-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h3 className="text-xl font-semibold tracking-tight">{project.name}</h3>
+                <h3 className="text-xl font-semibold tracking-tight">
+                  {project.name}
+                </h3>
                 <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground mt-1">
                   featured case study
                 </p>

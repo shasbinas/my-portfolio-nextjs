@@ -1,7 +1,7 @@
 "use client";
 
 import GitHubCalendar from "react-github-calendar";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { SiGithub } from "react-icons/si";
 import Link from "next/link";
@@ -85,7 +85,7 @@ export default function Github() {
           loading: false,
           error: "",
         });
-      } catch (error) {
+      } catch {
         if (controller.signal.aborted) return;
         setStats((prev) => ({
           ...prev,

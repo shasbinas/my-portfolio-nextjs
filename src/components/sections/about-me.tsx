@@ -82,7 +82,8 @@ export default function AboutMe() {
             const href = btn.href.trim();
             const isExternal = href.startsWith("http");
 
-            const isSpecial = href.startsWith("mailto:") || href.startsWith("tel:");
+            const isSpecial =
+              href.startsWith("mailto:") || href.startsWith("tel:");
 
             if (isExternal) {
               return (
@@ -104,7 +105,9 @@ export default function AboutMe() {
               <a
                 key={btn.label}
                 href={href}
-                onClick={(event) => isSpecial && handleSpecialNavigation(event, href)}
+                onClick={(event) =>
+                  isSpecial && handleSpecialNavigation(event, href)
+                }
                 className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
                 style={{ borderColor: "hsl(var(--border) / 0.6)" }}
                 aria-label={btn.label}

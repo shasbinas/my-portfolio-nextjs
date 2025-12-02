@@ -8,7 +8,8 @@ export default function Education() {
       <div className="flex flex-col gap-2">
         <h2 className="section-title">education.</h2>
         <p className="text-sm text-muted-foreground max-w-2xl">
-          Continuous learning through formal programs and self-directed research.
+          Continuous learning through formal programs and self-directed
+          research.
         </p>
       </div>
 
@@ -30,7 +31,6 @@ export default function Education() {
               {edu.institution}
               <MdOutlineArrowOutward className="w-4 h-4" />
             </Link>
-             
           </div>
         ))}
       </div>

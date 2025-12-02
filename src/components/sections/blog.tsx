@@ -43,13 +43,13 @@
 //           node {
 //             posts(first: 3) {
 //               edges {
-//                 node { 
-//                   title 
-//                   brief 
-//                   coverImage { url } 
-//                   slug 
-//                   publishedAt 
-//                   readTimeInMinutes 
+//                 node {
+//                   title
+//                   brief
+//                   coverImage { url }
+//                   slug
+//                   publishedAt
+//                   readTimeInMinutes
 //                 }
 //               }
 //             }
@@ -101,7 +101,7 @@
 // // =============================================
 
 // const BlogSection = () => {
-  
+
 //   const { blogs, loading } = useBlogs();
 //   if (!USER_NAMES.hashnodeUsername || USER_NAMES.hashnodeUsername.trim() === "") {
 //     return null;
