@@ -17,7 +17,7 @@ export default function GithubStarButton() {
           color="hsl(var(--foreground))"
           className="transition-transform duration-300 group-hover:scale-110"
         />
-        
+
         {/* Tooltip */}
         <span className="absolute left-full ml-3 px-3 py-1.5 text-xs font-medium text-white bg-black border border-gray-700 rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 flex items-center">
           Give it a ⭐ on GitHub!
@@ -29,4 +29,3 @@ export default function GithubStarButton() {
     </div>
   );
 }
-

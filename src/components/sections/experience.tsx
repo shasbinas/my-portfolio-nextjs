@@ -8,8 +8,9 @@ export default function Experience() {
       <div className="flex flex-col gap-2">
         <h2 className="section-title">work experience.</h2>
         <p className="text-sm text-muted-foreground max-w-2xl">
-          Collaborating with teams to ship resilient platforms, streamline developer workflows,
-          and ship products with a focus on security, scale, and craft.
+          Collaborating with teams to ship resilient platforms, streamline
+          developer workflows, and ship products with a focus on security,
+          scale, and craft.
         </p>
       </div>
 
@@ -38,7 +39,9 @@ export default function Experience() {
               </span>
             </div>
 
-            <p className="text-sm text-muted-foreground leading-relaxed">{exp.description}</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {exp.description}
+            </p>
 
             <div className="flex flex-wrap gap-1.5">
               {exp.skills.map((skill) => (

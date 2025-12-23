@@ -109,8 +109,8 @@ const Contact = () => {
           <div>
             <p className="text-xl font-semibold">Let&apos;s Connect</p>
             <p className="text-sm text-muted-foreground">
-              I&apos;m always open to new opportunities, freelance gigs, or a quick
-              coffee chat about ideas.
+              I&apos;m always open to new opportunities, freelance gigs, or a
+              quick coffee chat about ideas.
             </p>
           </div>
 
@@ -141,7 +141,9 @@ const Contact = () => {
                     <a
                       key={item.label}
                       href={item.href}
-                      onClick={(event) => handleSpecialNavigation(event, item.href!)}
+                      onClick={(event) =>
+                        handleSpecialNavigation(event, item.href!)
+                      }
                       className="flex items-center gap-4 rounded-2xl border border-transparent bg-[hsl(var(--background)/0.4)]/50 px-4 py-3 text-left transition-colors hover:border-[hsl(var(--border)/0.6)]"
                     >
                       {content}
@@ -203,7 +205,11 @@ const Contact = () => {
                   onClick={handleCopyEmail}
                   className="inline-flex items-center gap-1 text-xs font-semibold rounded-lg px-3 py-1.5 bg-[hsl(var(--accent))] text-[hsl(var(--background))]"
                 >
-                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                  {copied ? (
+                    <Check className="w-4 h-4" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
                   {copied ? "Copied" : "Copy"}
                 </button>
               </div>

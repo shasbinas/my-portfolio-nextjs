@@ -93,7 +93,9 @@ const LocationTime = ({ currentTime }: LocationTimeProps) => (
   <div className="hidden md:flex flex-col items-end gap-2 text-right text-sm">
     <div className="contact-card flex items-center gap-2 text-muted-foreground">
       <FaLocationCrosshairs className="w-4 h-4 text-[hsl(var(--border-hover))]" />
-      <span className="font-mono uppercase tracking-wide">{ABOUT_ME.location}</span>
+      <span className="font-mono uppercase tracking-wide">
+        {ABOUT_ME.location}
+      </span>
     </div>
     <div className="contact-card font-mono text-foreground">
       {currentTime ? `${currentTime} IST` : "Loading IST..."}
@@ -101,14 +103,12 @@ const LocationTime = ({ currentTime }: LocationTimeProps) => (
   </div>
 );
 
-
 // =============================================
 // MAIN COMPONENT
 // =============================================
 const Header = () => {
   const currentTime = useISTTime();
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
   return (
     <section className="pt-4">
@@ -121,8 +121,7 @@ const Header = () => {
               <h1 className="text-3xl font-semibold tracking-tight">
                 {ABOUT_ME.name}
               </h1>
-              <VerifiedBadge
-              />
+              <VerifiedBadge />
             </div>
             <p className="text-sm uppercase tracking-[0.35em] text-muted-foreground">
               {ABOUT_ME.title}
@@ -157,7 +156,9 @@ const Header = () => {
             <p className="font-semibold">
               {currentTime ? `${currentTime} IST` : "Loading IST..."}
             </p>
-            <p className="text-xs text-muted-foreground">Asia/Kolkata · UTC+05:30</p>
+            <p className="text-xs text-muted-foreground">
+              Asia/Kolkata · UTC+05:30
+            </p>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/next";
+import FluidCursor from "@/components/ui/FluidCursor";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -75,7 +76,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} dark`} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${outfit.variable} dark`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -115,8 +120,12 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${outfit.className} antialiased`} suppressHydrationWarning>
+      <body
+        className={`${outfit.className} antialiased`}
+        suppressHydrationWarning
+      >
         <Providers>{children}</Providers>
+        <FluidCursor />
         <Analytics />
       </body>
     </html>

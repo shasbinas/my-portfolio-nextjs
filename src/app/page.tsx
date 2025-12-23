@@ -21,7 +21,7 @@ export default function Home() {
       <GridPattern />
       <div className="aurora-glow" aria-hidden />
 
-      <main className="relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-6 md:px-8 pb-16 space-y-10">
+      <main className="relative z-10 max-w-5xl w-full mx-auto px-4 sm:px-6 md:px-8 pb-16 space-y-10 pt-20 lg:pt-24">
         <Navbar />
         <ScrollToTop />
         <GithubStarButton />
