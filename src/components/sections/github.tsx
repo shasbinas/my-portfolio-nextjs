@@ -101,8 +101,7 @@ export default function Github() {
   }, [username]);
 
   const pillClasses =
-    "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.65rem] uppercase tracking-[0.35em] dark:border-blue-400/30 dark:bg-blue-500/15 border-blue-600/60 bg-blue-50 text-black dark:text-blue-200";
-
+    "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[0.65rem] uppercase tracking-[0.35em] border-red-600/60 bg-red-50 text-orange-600 dark:border-red-400/30 dark:bg-red-500/15 dark:text-orange-400";
   return (
     <section className="py-6 space-y-4" id="github">
       <div className="flex flex-col gap-2">
@@ -128,13 +127,13 @@ export default function Github() {
             <span className={pillClasses}>activity</span>
             <span className={pillClasses} aria-label="Total followers">
               followers
-              <span className="text-sm font-semibold tracking-normal text-blue-600 dark:text-white">
+              <span className="text-sm font-semibold tracking-normal text-blue-600 dark:text-orange-400">
                 {stats.loading ? "…" : stats.followers.toLocaleString()}
               </span>
             </span>
             <span className={pillClasses} aria-label="Total stars">
               total stars
-              <span className="text-sm font-semibold tracking-normal text-blue-600 dark:text-white">
+              <span className="text-sm font-semibold tracking-normal text-blue-600 dark:text-orange-400">
                 {stats.loading ? "…" : stats.stars.toLocaleString()}
               </span>
             </span>
