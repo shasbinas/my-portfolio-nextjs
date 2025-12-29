@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/next";
 import FluidCursor from "@/components/ui/FluidCursor";
+import SmoothScroller from "@/components/ui/smooth-scroller";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -125,9 +126,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Providers>{children}</Providers>
+        <SmoothScroller />
         <FluidCursor />
         <Analytics />
       </body>
+
     </html>
   );
 }

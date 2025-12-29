@@ -161,7 +161,7 @@ export default function Navbar() {
             <Link
               href="#contact"
               onClick={(e) => handleScrollToSection(e, "#contact")}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[hsl(var(--link))] text-white text-sm hover:opacity-90 transition-opacity"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700 transition-colors"
             >
               Request a Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -216,7 +216,7 @@ export default function Navbar() {
                   handleScrollToSection(e, "#contact");
                   setIsMenuOpen(false);
                 }}
-                className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg bg-[hsl(var(--link))] text-white text-sm hover:opacity-90 transition-opacity mt-2"
+                className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700 transition-colors mt-2"
               >
                 Request a Project
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />

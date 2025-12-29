@@ -29,7 +29,7 @@
   }
 
   * {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; - Removed to avoid conflict with Lenis */
     font-family:
       var(--font-outfit),
       "Space Grotesk",
