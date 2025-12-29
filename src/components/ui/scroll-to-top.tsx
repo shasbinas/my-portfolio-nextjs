@@ -13,7 +13,7 @@ export default function ScrollToTop() {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrollPercent = (scrollTop / docHeight) * 100;
 
-      setIsVisible(scrollTop > 100);
+      setIsVisible(scrollTop > 300);
       setScrollProgress(scrollPercent);
     };
 

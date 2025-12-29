@@ -28,8 +28,12 @@
     --grid-line: 265 28% 18%;
   }
 
-  * {
+  html {
     scroll-behavior: smooth;
+    overscroll-behavior-y: none;
+  }
+
+  * {
     font-family:
       var(--font-outfit),
       "Space Grotesk",

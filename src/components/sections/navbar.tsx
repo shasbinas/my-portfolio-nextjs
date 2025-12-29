@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "../Link";
+import ScrollLink from "../ScrollLink";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { ABOUT_ME } from "../constants/data";
@@ -77,12 +77,12 @@ export default function Navbar() {
       >
         <div className="flex items-center justify-between h-12 px-4">
           {/* Logo/Brand link */}
-          <Link
+          <ScrollLink
             href="/"
             className="text-lg font-semibold text-foreground cursor-pointer"
           >
             {ABOUT_ME.name?.split(" ")[0]}.
-          </Link>
+          </ScrollLink>
 
           {/* Desktop navigation menu */}
           <div className="hidden lg:flex space-x-5 items-center relative">
@@ -91,7 +91,7 @@ export default function Navbar() {
               const isActive = activeSection === sectionId;
 
               return (
-                <Link
+                <ScrollLink
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
@@ -140,21 +140,21 @@ export default function Navbar() {
                       }}
                     />
                   )}
-                </Link>
+                </ScrollLink>
               );
             })}
 
             <ThemeToggle />
 
             {/* Request a Project button */}
-            <Link
+            <ScrollLink
               href="#contact"
               onClick={() => setIsMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700 transition-colors"
             >
               Request a Project
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Link>
+            </ScrollLink>
           </div>
 
           {/* Mobile menu button */}
@@ -184,7 +184,7 @@ export default function Navbar() {
                 const isActive = activeSection === sectionId;
 
                 return (
-                  <Link
+                  <ScrollLink
                     key={item.name}
                     href={item.href}
                     onClick={() => {
@@ -195,10 +195,10 @@ export default function Navbar() {
                     }`}
                   >
                     {item.name}
-                  </Link>
+                  </ScrollLink>
                 );
               })}
-              <Link
+              <ScrollLink
                 href="#contact"
                 onClick={() => {
                   setIsMenuOpen(false);
@@ -207,7 +207,7 @@ export default function Navbar() {
               >
                 Request a Project
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </Link>
+              </ScrollLink>
             </div>
           </div>
         )}
