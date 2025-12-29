@@ -43,6 +43,7 @@ export default function HandwritingAnimation({ onComplete, className }: Props) {
           className={`${dancingScript.className} text-[#4facfe] font-bold`}
           fontSize="90" 
           stroke="#4facfe"
+          fill="#4facfe"
           strokeWidth="2"
           clipPath="url(#text-reveal)"
           initial={{ fillOpacity: 0 }}
