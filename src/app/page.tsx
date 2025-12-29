@@ -15,9 +15,12 @@ import LeetCode from "@/components/sections/leetcode";
 import Contact from "@/components/sections/contact";
 import Footer from "@/components/sections/footer";
 
+import IntroAnimation from "@/components/IntroAnimation";
+
 export default function Home() {
   return (
     <div className="font-sans min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+      <IntroAnimation />
       <GridPattern />
       <div className="aurora-glow" aria-hidden />
 
