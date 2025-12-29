@@ -6,12 +6,12 @@ import Lenis from "lenis";
 export default function SmoothScroller() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5, // Stronger smoothing effect
+      duration: 1.6, // Longer duration for that "premium" smooth feel
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1.1, // slightly reduced from 2.0 to prevent "jumpy/hang" feel while keeping it responsive
+      wheelMultiplier: 1.5, // Balanced sensitivity: responsive but controlle
       touchMultiplier: 2,
     });
 
