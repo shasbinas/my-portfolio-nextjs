@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import Link from "../Link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { ABOUT_ME } from "../constants/data";
@@ -64,18 +64,7 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
-  // Handle smooth scroll to section when nav link is clicked
-  const handleScrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    const element = document.getElementById(href.substring(1)); // Remove '#' from href
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false); // Close menu on mobile after clicking
-    }
-  };
+
 
   return (
     <>
@@ -105,7 +94,7 @@ export default function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => handleScrollToSection(e, item.href)}
+                  onClick={() => setIsMenuOpen(false)}
                   className="relative block w-fit leading-[1.5] py-1 text-sm text-foreground/80 cursor-pointer group nav-link hover:text-[hsl(var(--link))] hover:scale-105 transition-transform"
                 >
                   {/* Container for letter animations */}
@@ -160,7 +149,7 @@ export default function Navbar() {
             {/* Request a Project button */}
             <Link
               href="#contact"
-              onClick={(e) => handleScrollToSection(e, "#contact")}
+              onClick={() => setIsMenuOpen(false)}
               className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700 transition-colors"
             >
               Request a Project
@@ -198,8 +187,7 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => {
-                      handleScrollToSection(e, item.href);
+                    onClick={() => {
                       setIsMenuOpen(false);
                     }}
                     className={`block px-3 py-2 rounded-md text-sm text-center text-foreground/80 hover:bg-foreground/10 transition-colors capitalize ${
@@ -212,8 +200,7 @@ export default function Navbar() {
               })}
               <Link
                 href="#contact"
-                onClick={(e) => {
-                  handleScrollToSection(e, "#contact");
+                onClick={() => {
                   setIsMenuOpen(false);
                 }}
                 className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-sm hover:bg-blue-700 transition-colors mt-2"
