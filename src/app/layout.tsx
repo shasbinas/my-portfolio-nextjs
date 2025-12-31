@@ -13,46 +13,54 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Shasbin AS  - Portfolio Website",
+  metadataBase: new URL("https://shasbin.in"),
+  title: "Shasbin AS - Full Stack Developer | Backend & Frontend Expert",
   description:
-    "Your portfolio showcasing your development projects and skills. Update this description with your own details.",
+    "Portfolio of Shasbin AS, a Full Stack Developer from Irinjalakuda, Thrissur, India. Expert in Node.js, Express, React, Next.js, and scaling secure backend systems.",
   keywords: [
-    "Shasbin AS ",
+    "Shasbin AS",
     "Full Stack Developer",
-    "React",
+    "Backend Developer",
+    "MERN Stack",
     "Next.js",
+    "React",
+    "Node.js",
     "TypeScript",
     "Web Development",
-    "Portfolio",
-    "Frontend Developer",
-    "Backend Developer",
-    "JavaScript",
-    "Node.js",
-    "Your City",
-    "Your Country",
+    "Thrissur",
+    "Kerala",
+    "Software Engineer",
   ],
-  authors: [{ name: "Shasbin AS " }],
-  creator: "Shasbin AS ",
-  publisher: "Shasbin AS ",
-  metadataBase: new URL("https://your-portfolio-url.com"),
+  authors: [{ name: "Shasbin AS", url: "https://shasbin.in" }],
+  creator: "Shasbin AS",
+  publisher: "Shasbin AS",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-portfolio-url.com",
-    title: "Shasbin AS  - Portfolio Website for a Full Stack Developer",
+    url: "https://shasbin.in",
+    title: "Shasbin AS - Full Stack Developer Portfolio",
     description:
-      "Personal portfolio showcasing skills, projects, experience, and more. Built with modern web technologies.",
-    siteName: "Shasbin AS  Portfolio",
+      "Explore the projects and skills of Shasbin AS. Specializing in scalable backend systems and modern frontend interfaces.",
+    siteName: "Shasbin AS Portfolio",
+    images: [
+      {
+        url: "/opengraph-image.png", // Next.js automatically generates this if you have opengraph-image.tsx
+        width: 1200,
+        height: 630,
+        alt: "Shasbin AS Portfolio",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shasbin AS  - Portfolio Website for a Full Stack Developer",
+    title: "Shasbin AS - Full Stack Developer",
     description:
-      "Personal portfolio showcasing skills, projects, experience, and more. Built with modern web technologies.",
-    creator: "@your_twitter_handle",
+      "Explore the projects and skills of Shasbin AS. Specializing in scalable backend systems and modern frontend interfaces.",
+    creator: "@shasbinas", // Assuming handle based on github/others
+    images: ["/twitter-image.png"], // Next.js automatically generates this if you have twitter-image.tsx
   },
   robots: {
     index: true,
@@ -66,7 +74,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "",
+    google: "u82iDi1b-lYEt4NXIrOsGpS_PTMQ73tpZSK2Ocq3hKY",
   },
 };
 
@@ -97,24 +105,32 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Shasbin AS ",
-              url: "https://your-portfolio-url.com",
+              name: "Shasbin AS",
+              url: "https://shasbin.in",
               jobTitle: "Full Stack Developer",
               description:
-                "Personal portfolio showcasing skills, projects, experience, and more. Built with modern web technologies.",
+                "Full Stack Developer specializing in Node.js, Express, React, and scalable backend architectures.",
+              image: "https://shasbin.in/profile-image.jpg", // Adjust if you have a specific URL
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Irinjalakuda, Thrissur",
+                addressRegion: "Kerala",
+                addressCountry: "India",
+              },
               knowsAbout: [
+                "Result-Oriented",
+                "Backend Development",
+                "Frontend Development",
                 "React",
                 "Next.js",
                 "TypeScript",
-                "JavaScript",
                 "Node.js",
-                "Full Stack Development",
-                "Web Development",
+                "Database Management",
               ],
               sameAs: [
-                "https://github.com/your-github-username",
-                "https://linkedin.com/in/your-linkedin",
-                "https://twitter.com/your-twitter",
+                "https://github.com/shasbinas",
+                "https://linkedin.com/in/shasbinasdev",
+                "https://leetcode.com/shasbinas",
               ],
             }),
           }}
@@ -128,7 +144,6 @@ export default function RootLayout({
         <FluidCursor />
         <Analytics />
       </body>
-
     </html>
   );
 }
