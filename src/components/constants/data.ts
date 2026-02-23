@@ -3,12 +3,12 @@
 
 export const ABOUT_ME = {
   name: "Shasbin AS",
-  title: "Backend Developer",
+  title: "Full Stack Developer",
   location: "Irinjalakuda, Thrissur, Kerala, India",
   email: "shasbin.official@gmail.com",
   description: [
-    "Hi, I’m Shasbin A.S, a backend developer with a strong focus on building reliable, scalable, and secure server-side applications. I enjoy solving complex problems and turning ideas into efficient APIs and systems.",
-    "I’m passionate about developing secure authentication flows, robust RESTful APIs, and intelligent data-driven applications. I enjoy crafting backend systems that are scalable, maintainable, and built with clean, modern architecture.",
+    "Hi, I’m Shasbin A.S, a Full Stack Developer with a strong focus on building reliable, scalable, and secure web applications. I enjoy solving complex problems and turning ideas into efficient systems.",
+    "I’m passionate about developing secure authentication flows, robust RESTful APIs, and intelligent data-driven applications. I enjoy crafting full-stack systems that are scalable, maintainable, and built with clean, modern architecture.",
   ],
   profileImage: "/profile-image.jpg", // Replace with your profile image
   profileGif: "/profile-gif.gif", // Replace with your personalised gif

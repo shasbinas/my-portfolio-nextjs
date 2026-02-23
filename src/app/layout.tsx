@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://shasbin.in"),
   title: "Shasbin AS - Full Stack Developer ",
   description:
-    "Portfolio of Shasbin AS, a Full Stack Developer from Irinjalakuda, Thrissur, India. Expert in Node.js, Express, React, Next.js, and scaling secure backend systems.",
+    "Portfolio of Shasbin AS, a Full Stack Developer from Irinjalakuda, Thrissur, India. Expert in Node.js, Express, React, Next.js, and building scalable full-stack applications.",
   keywords: [
     "Shasbin AS",
     "Full Stack Developer",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     url: "https://shasbin.in",
     title: "Shasbin AS - Full Stack Developer Portfolio",
     description:
-      "Explore the projects and skills of Shasbin AS. Specializing in scalable backend systems and modern frontend interfaces.",
+      "Explore the projects and skills of Shasbin AS. Specializing in building scalable full-stack applications and modern web interfaces.",
     siteName: "Shasbin AS Portfolio",
     images: [
       {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shasbin AS - Full Stack Developer",
     description:
-      "Explore the projects and skills of Shasbin AS. Specializing in scalable backend systems and modern frontend interfaces.",
+      "Explore the projects and skills of Shasbin AS. Specializing in building scalable full-stack applications and modern web interfaces.",
     creator: "@shasbinas", // Assuming handle based on github/others
     images: ["/twitter-image.png"], // Next.js automatically generates this if you have twitter-image.tsx
   },

@@ -147,7 +147,7 @@ const Header = () => {
             <p className="text-blue-500 uppercase tracking-[0.3em] text-[0.6rem] mb-1">
               speciality
             </p>
-            <p className="font-semibold">Backend systems & secure APIs</p>
+            <p className="font-semibold">Full Stack Web Applications</p>
           </div>
           <div className="contact-card">
             <p className="text-blue-500 uppercase tracking-[0.3em] text-[0.6rem] mb-1">
