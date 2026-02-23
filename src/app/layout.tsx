@@ -47,10 +47,11 @@ export const metadata: Metadata = {
     siteName: "Shasbin AS Portfolio",
     images: [
       {
-        url: "/opengraph-image.png", // Next.js automatically generates this if you have opengraph-image.tsx
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Shasbin AS Portfolio",
+        type: "image/png",
       },
     ],
   },
