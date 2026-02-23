@@ -14,7 +14,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://shasbin.in"),
-  title: "Shasbin AS - Full Stack Developer | Backend & Frontend Expert",
+  title: "Shasbin AS - Full Stack Developer ",
   description:
     "Portfolio of Shasbin AS, a Full Stack Developer from Irinjalakuda, Thrissur, India. Expert in Node.js, Express, React, Next.js, and scaling secure backend systems.",
   keywords: [
