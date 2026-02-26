@@ -39,40 +39,77 @@ export const SOCIAL_LINKS = {
 export const FORM_ENDPOINT = "https://formspree.io/f/your-form-id";
 
 export const SKILLS = {
-  // Keep only the skills you want to showcase and remove the rest
-  frontend: [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Bootstrap",
-  ],
-  backend: ["Node.js", "Express.js"],
-  databases: ["MongoDB", "MySQL", "PostgreSQL", "Redis"],
   languages: [
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "HTML5",
+    "CSS3",
+    "SQL",
+    "Python",
     "C",
     "C++",
     "Java",
-    "Python",
-    "Django",
-    "JavaScript",
-    "TypeScript",
   ],
-  cloudDevOps: ["AWS", "Docker", "Vercel", "GitHub Actions"],
-  tools: [
-    "VS Code",
-    "Git",
+
+  frontend: [
+    "React.js",
+    "Next.js",
+    "Redux",
+    "Redux Toolkit",
+    "jQuery",
+    "Tailwind CSS",
+    "Bootstrap",
+    "Framer Motion",
+  ],
+
+  backend: [
+    "Node.js",
+    "Express.js",
+    "Nest.js",
+    "RESTful APIs",
+    "GraphQL",
+    "JWT",
+    "Socket.io",
+    "WebSocket",
+  ],
+
+  databases: ["MongoDB", "PostgreSQL", "Redis", "Mongoose ODM", "Prisma ORM"],
+
+  cloudDevOps: [
+    "AWS (Cognito, Lambda, API Gateway, EC2, S3)",
+    "Docker",
+    "CI/CD",
     "GitHub",
-    "GitLab",
-    "Postman",
+    "Linux/Bash",
+  ],
+
+  testing: ["Jest", "Postman", "Playwright", "Supertest"],
+
+  tools: [
+    "Git",
+    "Swagger",
     "Figma",
-    "Jest",
-    "Windows",
+    "Adobe Photoshop",
+    "Vite",
+    "VS Code",
+    "Jira",
+    "Notion",
+    "ESLint",
+    "npm",
+    "Yarn",
+  ],
+
+  architectureConcepts: [
+    "MVC",
+    "SOLID Principles",
+    "OOP",
+    "Design Patterns",
+    "System Design",
+    "API Rate Limiting",
+    "Load Balancing",
+    "Data Structures & Algorithms",
   ],
 };
-
 export const PROJECTS = [
   {
     name: "task-manager-api-ts",

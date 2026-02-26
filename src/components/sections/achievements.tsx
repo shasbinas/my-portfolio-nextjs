@@ -27,6 +27,13 @@ const PLACEHOLDER_BADGES = [
       "https://assets.leetcode.com/static_assets/others/LeetCode_75.gif",
   },
   {
+    title: "Top SQL 50",
+    platform: "LeetCode",
+    description: "Completed the Top SQL 50 challenge",
+    imagePath:
+      "https://assets.leetcode.com/static_assets/others/Top_SQL_50.gif",
+  },
+  {
     title: "Pull Shark",
     platform: "GitHub",
     description: "Opened pull requests that have been merged",
