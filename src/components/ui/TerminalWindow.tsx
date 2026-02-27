@@ -458,7 +458,7 @@ export function TerminalWindow() {
           ref={scrollRef}
           className="relative flex-1 overflow-auto p-5 scroll-smooth sm:p-7 scrollbar-hide"
         >
-          <pre className="mb-6 self-start whitespace-pre font-mono text-[7px] font-bold leading-[1.1] text-[#ff2cf1] selection:bg-transparent sm:mb-8 sm:text-[14px] drop-shadow-[0_0_15px_rgba(255,44,241,0.5)]">
+          <pre className="mb-6 self-start whitespace-pre font-mono text-[6px] font-bold leading-[1.1] text-[#ff2cf1] selection:bg-transparent sm:mb-8 sm:text-[11px] drop-shadow-[0_0_15px_rgba(255,44,241,0.5)]">
             {ASCII_ART}
           </pre>
           <div className="space-y-2">
