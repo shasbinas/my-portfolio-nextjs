@@ -30,7 +30,7 @@ export const SOCIAL_LINKS = {
   email: "mailto:shasbin.official@gmail.com",
   // blog: "https://yourblog.com", // remove if you don't have a blog
   resume:
-    "https://drive.google.com/file/d/1oPJLNdage1MwhFuwdrVo3a4MfDIHr7lU/view",
+    "https://drive.google.com/file/d/1DXDWBM16bqX7tpaNr4sFReLm3u8kxtyL/view?usp=sharing",
   phone: "+91 9746998909",
   whatsapp: "https://wa.me/ 9746998909",
 };
