@@ -173,8 +173,7 @@ export const PROJECTS = [
     ],
     link: "",
     github: "https://github.com/shasbinas/task-manager-api-ts",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop",
+    image: "/restapis.png",
     color: "#10B981",
   },
   {
