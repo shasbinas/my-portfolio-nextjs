@@ -70,21 +70,18 @@ const handleSpecialNavigation = (
 export default function AboutMe() {
   return (
     <section className="pb-6">
-      {/* Section Header - Sana Color */}
+      {/* Section Header - Synced with Technical Skills */}
       <div className="mb-8">
-        <h2 className="text-3xl font-extrabold tracking-tight text-[#ff2cf1] flex items-center gap-4">
-          about.
-          <div className="h-[1px] flex-1 bg-white/10" />
-        </h2>
+        <h2 className="section-title w-full">about.</h2>
       </div>
 
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-end">
         {/* Left Side: Interactive Terminal */}
         <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2 px-1 text-xs font-bold text-[#ff2cf1] animate-pulse tracking-wide">
+          <div className="flex items-center gap-2 px-1 text-xs font-bold text-accent animate-pulse tracking-wide">
             <span>Try me!</span>
             <span className="text-white/40 font-medium">click & type</span>
-            <span className="text-[#ff2cf1]/60">↓</span>
+            <span className="text-accent/60">↓</span>
           </div>
           <TerminalWindow />
         </div>
