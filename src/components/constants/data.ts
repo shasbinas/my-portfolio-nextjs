@@ -30,7 +30,7 @@ export const SOCIAL_LINKS = {
   email: "mailto:shasbin.official@gmail.com",
   // blog: "https://yourblog.com", // remove if you don't have a blog
   resume:
-    "https://drive.google.com/file/d/1oPJLNdage1MwhFuwdrVo3a4MfDIHr7lU/view",
+    "https://drive.google.com/file/d/1DXDWBM16bqX7tpaNr4sFReLm3u8kxtyL/view?usp=sharing",
   phone: "+91 9746998909",
   whatsapp: "https://wa.me/ 9746998909",
 };
@@ -99,7 +99,7 @@ export const SKILLS = {
     "Yarn",
   ],
 
-  architectureConcepts: [
+  "architecture Concepts": [
     "MVC",
     "SOLID Principles",
     "OOP",
@@ -112,42 +112,90 @@ export const SKILLS = {
 };
 export const PROJECTS = [
   {
-    name: "task-manager-api-ts",
+    id: 1,
+    name: "Next.js Project Management App",
+    category: "Full Stack",
     description:
-      " A production-ready Task Manager REST API built with TypeScript, Express, PostgreSQL, Prisma, and Redis — featuring secure auth, role-based access, task management, comments, user controls, and Cloudinary uploads.",
+      "Architected a full-stack project management application supporting 5+ project views with an interactive analytics dashboard.\nDelivered multi-view task tracking (List, Board, Timeline, Table) with priority assignment and team role management for 10+ member teams.\nIntegrated AWS Cognito and JWT authentication for secure access and AWS S3 for scalable file uploads.\nImplemented global search, dark mode, and fully responsive UI for seamless cross-device experience.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Prisma",
+      "AWS Cognito",
+      "AWS S3",
+      "JWT",
+      "Tailwind CSS",
+    ],
+    link: "",
+    github: "https://github.com/shasbinas/project-management",
+    image: "/product_mangment (1).png",
+    color: "#6366F1",
+  },
+  {
+    id: 2,
+    name: "Next.js Modern Portfolio Website",
+    category: "Frontend",
+    description:
+      "Designed a responsive 9+ section portfolio using Next.js 15 and TypeScript with dark mode and Framer Motion animations.\nIntegrated GitHub and LeetCode APIs displaying 261+ solved problems, 64-day max streak, and 171 active days.\nOptimized SEO and performance achieving 90+ Lighthouse score via image optimization, code splitting, and Open Graph meta tags.\nConfigured reusable components with ESLint, Prettier, and Vercel Analytics for maintainability.",
+    tech: [
+      "Next.js 15",
+      "TypeScript",
+      "Framer Motion",
+      "Tailwind CSS",
+      "GitHub API",
+      "LeetCode API",
+      "Vercel",
+    ],
+    link: "",
+    github: "https://github.com/shasbinas/my-portfolio-nextjs",
+    image: "/portfolio.png",
+    color: "#3178C6",
+  },
+  {
+    id: 3,
+    name: "Task Manager REST APIs",
+    category: "Backend",
+    description:
+      "Developed a REST API with 15+ endpoints using Node.js, TypeScript, Express, PostgreSQL, and Prisma ORM with role-based access control.\nSecured APIs using JWT authentication, Redis token blacklisting, and Argon2 password hashing preventing unauthorized access.\nImplemented task CRUD operations and comment modules with Cloudinary file upload support.\nConfigured Helmet, CORS, rate limiting, and Jest achieving 80%+ test coverage for security and reliability.",
     tech: [
       "Node.js",
       "TypeScript",
-      "JWT",
-      "Redis",
+      "Express.js",
       "PostgreSQL",
       "Prisma ORM",
-      "argon2",
+      "Redis",
+      "JWT",
+      "Argon2",
       "Cloudinary",
-      "Jest + Supertest",
+      "Jest",
     ],
     link: "",
     github: "https://github.com/shasbinas/task-manager-api-ts",
+    image: "/restapis.png",
+    color: "#10B981",
   },
   {
-    name: "ChronoRoyale-Ecommerce-WebApp",
+    id: 4,
+    name: "Chrono Royale E-Commerce Platform",
+    category: "Full Stack",
     description:
-      "ChronoRoyale is built to deliver a modern e-commerce experience specifically for luxury watches. Users can browse, wishlist, add to cart, and place orders. Admins can manage products, users, and orders with ease.",
+      "Launched a full-stack e-commerce platform managing 100+ products using Node.js, Express.js, MongoDB, and MVC architecture.\nSecured JWT authentication with cart, wishlist, and order tracking features for enhanced user experience.\nEngineered admin dashboard with product management and real-time Chart.js analytics.\nImplemented soft delete, user blocking, and order status management reducing admin workload by 40%.",
     tech: [
       "Node.js",
-      "JavaScript",
-      "Bootstrap 5",
+      "Express.js",
+      "MongoDB",
       "Handlebars",
       "Chart.js",
-      "Express.js",
-      "Multer",
-      "MongoDBAtlas",
+      "Bootstrap 5",
       "JWT",
     ],
-    link: "https://chronoroyale-ecommerce-webapp.onrender.com",
-    github: "https://github.com/shasbinas/ChronoRoyale-Ecommerce-WebApp.git",
+    link: "",
+    github: "",
+    image: "/chronoroyale.png",
+    color: "#F59E0B",
   },
-  // Add more projects as needed
 ];
 
 export const EXPERIENCE = [

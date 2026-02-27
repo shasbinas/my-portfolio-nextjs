@@ -5,6 +5,8 @@ import { ABOUT_ME, SOCIAL_LINKS } from "@/components/constants/data";
 import { Mail, FileText } from "lucide-react";
 import { SiLeetcode } from "react-icons/si";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { AboutTerminal } from "../ui/AboutTerminal";
+import { TerminalWindow } from "../ui/TerminalWindow";
 
 // =============================================
 // SOCIAL BUTTONS DATA
@@ -68,55 +70,74 @@ const handleSpecialNavigation = (
 export default function AboutMe() {
   return (
     <section className="pb-6">
-      <div className="glass-panel hover-lift space-y-6">
-        <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
-          {ABOUT_ME.description.map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
+      {/* Section Header - Synced with Technical Skills */}
+      <div className="mb-8">
+        <h2 className="section-title w-full">about.</h2>
+      </div>
+
+      <div className="glass-panel hover-lift space-y-5">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-end">
+          {/* Left Side: Interactive Terminal */}
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2 px-1 text-xs font-bold animate-pulse tracking-wide">
+              <span className="text-[#ff2cf1] dark:text-[#ff2cf1] font-extrabold uppercase tracking-widest">Try me!</span>
+              <span className="text-muted-foreground/60 font-medium">click & type</span>
+              <span className="text-[#ff2cf1]/60">↓</span>
+            </div>
+            <TerminalWindow />
+          </div>
+
+        {/* Right Side: Bio Terminal */}
+        <div className="flex flex-col gap-6">
+          <AboutTerminal />
         </div>
+      </div>
 
-        <div className="flex gap-3 flex-wrap">
-          {SOCIAL_BUTTONS.filter(
-            (btn) => btn.href && btn.href.trim() !== ""
-          ).map((btn) => {
-            const href = btn.href.trim();
-            const isExternal = href.startsWith("http");
+      {/* Social Buttons - Moved to Bottom & Styled to Match Reference */}
+      <div className="mt-12 flex flex-wrap items-center justify-center gap-4 sm:justify-start">
+        {SOCIAL_BUTTONS.filter(
+          (btn) => btn.href && btn.href.trim() !== ""
+        ).map((btn) => {
+          const href = btn.href.trim();
+          const isExternal = href.startsWith("http");
+          const isSpecial = href.startsWith("mailto:") || href.startsWith("tel:");
+          
+          // Style based on icon type (circular for icons, pill for text)
+          const isPill = btn.label === "Resume" || btn.label === "Email";
+          
+          const baseStyles = "flex items-center justify-center bg-muted/60 dark:bg-white/5 text-muted-foreground hover:bg-accent/10 hover:text-accent dark:hover:bg-white/10 dark:hover:text-white transition-all duration-300 shadow-lg border border-border/50 dark:border-white/5";
+          const finalStyles = isPill 
+            ? `${baseStyles} px-6 py-2.5 rounded-xl text-sm font-semibold gap-3`
+            : `${baseStyles} w-12 h-12 rounded-full`;
 
-            const isSpecial =
-              href.startsWith("mailto:") || href.startsWith("tel:");
-
-            if (isExternal) {
-              return (
-                <Link
-                  key={btn.label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
-                  style={{ borderColor: "hsl(var(--border) / 0.6)" }}
-                  aria-label={btn.label}
-                >
-                  {btn.icon}
-                </Link>
-              );
-            }
-
+          if (isExternal) {
             return (
-              <a
+              <Link
                 key={btn.label}
                 href={href}
-                onClick={(event) =>
-                  isSpecial && handleSpecialNavigation(event, href)
-                }
-                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium text-foreground/85 tracking-wide transition-all hover-lift ${btn.className || ""}`}
-                style={{ borderColor: "hsl(var(--border) / 0.6)" }}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={finalStyles}
                 aria-label={btn.label}
               >
                 {btn.icon}
-              </a>
+              </Link>
             );
-          })}
-        </div>
+          }
+
+          return (
+            <a
+              key={btn.label}
+              href={href}
+              onClick={(event) => isSpecial && handleSpecialNavigation(event, href)}
+              className={finalStyles}
+              aria-label={btn.label}
+            >
+              {btn.icon}
+            </a>
+          );
+        })}
+      </div>
       </div>
     </section>
   );
