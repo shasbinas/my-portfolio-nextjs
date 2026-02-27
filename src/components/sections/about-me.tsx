@@ -78,10 +78,10 @@ export default function AboutMe() {
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-end">
         {/* Left Side: Interactive Terminal */}
         <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2 px-1 text-xs font-bold text-accent animate-pulse tracking-wide">
-            <span>Try me!</span>
-            <span className="text-white/40 font-medium">click & type</span>
-            <span className="text-accent/60">↓</span>
+          <div className="flex items-center gap-2 px-1 text-xs font-bold animate-pulse tracking-wide">
+            <span className="text-[#ff2cf1] dark:text-[#ff2cf1] font-extrabold uppercase tracking-widest">Try me!</span>
+            <span className="text-muted-foreground/60 font-medium">click & type</span>
+            <span className="text-[#ff2cf1]/60">↓</span>
           </div>
           <TerminalWindow />
         </div>
@@ -104,7 +104,7 @@ export default function AboutMe() {
           // Style based on icon type (circular for icons, pill for text)
           const isPill = btn.label === "Resume" || btn.label === "Email";
           
-          const baseStyles = "flex items-center justify-center bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-all duration-300 shadow-xl border border-white/5";
+          const baseStyles = "flex items-center justify-center bg-muted/60 dark:bg-white/5 text-muted-foreground hover:bg-accent/10 hover:text-accent dark:hover:bg-white/10 dark:hover:text-white transition-all duration-300 shadow-lg border border-border/50 dark:border-white/5";
           const finalStyles = isPill 
             ? `${baseStyles} px-6 py-2.5 rounded-xl text-sm font-semibold gap-3`
             : `${baseStyles} w-12 h-12 rounded-full`;

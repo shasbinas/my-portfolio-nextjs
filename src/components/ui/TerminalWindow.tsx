@@ -433,22 +433,22 @@ export function TerminalWindow() {
       className="relative w-full font-mono text-xs leading-relaxed sm:text-sm"
     >
       <div className="absolute -inset-0.5 rounded-xl bg-accent/20 opacity-20 blur-lg" />
-      <div
-        ref={containerRef}
-        onClick={handleContainerClick}
-        className="relative flex h-[350px] cursor-text flex-col overflow-hidden rounded-xl border border-white/10 bg-[#161122] shadow-2xl transition-shadow hover:border-accent/30 sm:h-[420px]"
-      >
-        <div className="flex h-10 shrink-0 select-none items-center justify-between bg-white/5 px-4">
+        <div
+          ref={containerRef}
+          onClick={handleContainerClick}
+          className="relative flex h-[350px] cursor-text flex-col overflow-hidden rounded-2xl border-2 border-accent/30 bg-background/60 backdrop-blur-xl shadow-2xl transition-all hover:border-accent/50 sm:h-[420px]"
+        >
+          <div className="flex h-12 shrink-0 select-none items-center justify-between border-b border-border/50 bg-muted/40 px-4">
           <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-[#ff5f56]" />
-            <div className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
-            <div className="h-3 w-3 rounded-full bg-[#27c93f]" />
+            <div className="h-3 w-3 rounded-full bg-red-500/80" />
+            <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
+            <div className="h-3 w-3 rounded-full bg-green-500/80" />
           </div>
-          <div className="flex items-center gap-2 text-[10px] font-medium tracking-wider text-white/40">
+          <div className="flex items-center gap-2 text-[10px] font-medium tracking-wider text-muted-foreground/70">
             <span className="text-accent font-bold">›_</span>
             <span>shasbin:~/welcome</span>
           </div>
-          <span className="flex shrink-0 items-center gap-1.5 rounded-md border border-accent/40 bg-accent/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-accent-secondary shadow-[0_0_10px_rgba(var(--accent),0.1)]">
+          <span className="flex shrink-0 items-center gap-1.5 rounded-md border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-accent shadow-[0_0_10px_rgba(var(--accent),0.1)]">
             <Keyboard className="h-3 w-3 shrink-0" />
             <span className="hidden sm:inline">Interactive Terminal</span>
             <span className="sm:hidden">Type</span>
@@ -469,12 +469,12 @@ export function TerminalWindow() {
                   layout
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="flex w-full flex-row items-baseline gap-2 font-medium leading-tight text-white/80 wrap-break-word whitespace-pre-wrap"
+                  className="flex w-full flex-row items-baseline gap-2 font-medium leading-tight text-foreground/90 wrap-break-word whitespace-pre-wrap"
                 >
                   {!log.isCommand && (
                     <>
                       {log.timestamp && (
-                        <span className="shrink-0 select-none text-white/20">
+                        <span className="shrink-0 select-none text-muted-foreground/40">
                           [{log.timestamp}]
                         </span>
                       )}
@@ -489,7 +489,7 @@ export function TerminalWindow() {
                   )}
                   <span
                     className={
-                      log.isCommand ? "" : log.color || "text-white/90"
+                      log.isCommand ? "text-foreground font-bold" : log.color || "text-foreground/90"
                     }
                   >
                     {log.message}
@@ -516,10 +516,10 @@ export function TerminalWindow() {
                 </motion.span>
                 <span className="shrink-0 whitespace-nowrap font-bold">
                   <span className="text-[#ff2cf1]">shasbin</span>
-                  <span className="text-white/30">:</span>
-                  <span className="text-purple-400">~</span>
+                  <span className="text-muted-foreground/30">:</span>
+                  <span className="text-purple-600 dark:text-purple-400">~</span>
                   <span className="text-[#ff2cf1]">$</span>
-                  <span className="text-white/20"> </span>
+                  <span className="text-muted-foreground/20"> </span>
                 </span>
                 <div className="relative min-w-0 flex-1">
                   <input
@@ -528,7 +528,7 @@ export function TerminalWindow() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    className="w-full border-none bg-transparent font-mono text-sm text-white outline-none caret-[#ff2cf1] placeholder:text-white/10"
+                    className="w-full border-none bg-transparent font-mono text-sm text-foreground outline-none caret-[#ff2cf1] placeholder:text-muted-foreground/20"
                     autoComplete="off"
                     spellCheck={false}
                     placeholder={placeholderText}
@@ -538,20 +538,20 @@ export function TerminalWindow() {
             )}
           </div>
         </div>
-        <div className="flex h-8 shrink-0 items-center justify-between border-t border-white/5 bg-white/5 px-4 font-mono text-[10px] text-white/40">
+        <div className="flex h-10 shrink-0 items-center justify-between border-t border-border/50 bg-muted/40 px-4 font-mono text-[10px] text-muted-foreground/60">
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 line-clamp-1">
               <Disc className={`h-3 w-3 ${isBooting ? "animate-spin" : ""}`} />
-              <span>STATUS: READY</span>
+              <span className="uppercase tracking-widest whitespace-nowrap">Status: {isBooting ? "Booting" : "Ready"}</span>
             </div>
             <div className="hidden items-center gap-1.5 sm:flex">
               <Cpu className="h-3 w-3" />
-              <span>MEM: {history.length * 2}KB</span>
+              <span className="uppercase tracking-widest">Mem: 8KB</span>
             </div>
           </div>
-          <div className="flex items-center gap-1.5 text-accent/80">
-            <Wifi className="h-3 w-3" />
-            <span>ONLINE</span>
+          <div className="flex items-center gap-1.5">
+            <Wifi className="h-3 w-3 text-green-500/80" />
+            <span className="uppercase tracking-widest">Online</span>
           </div>
         </div>
       </div>
