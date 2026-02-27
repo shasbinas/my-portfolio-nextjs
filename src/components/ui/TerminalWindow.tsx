@@ -456,9 +456,9 @@ export function TerminalWindow() {
         </div>
         <div
           ref={scrollRef}
-          className="relative flex-1 overflow-auto p-5 scroll-smooth sm:p-7"
+          className="relative flex-1 overflow-auto p-5 scroll-smooth sm:p-7 scrollbar-hide"
         >
-          <pre className="mb-6 self-start whitespace-pre font-mono text-[7px] font-bold leading-[1.1] text-transparent selection:bg-transparent sm:mb-8 sm:text-[14px] bg-gradient-to-b from-accent to-accent-secondary bg-clip-text drop-shadow-[0_0_12px_hsl(var(--accent)/0.5)]">
+          <pre className="mb-6 self-start whitespace-pre font-mono text-[7px] font-bold leading-[1.1] text-[#ff2cf1] selection:bg-transparent sm:mb-8 sm:text-[14px] drop-shadow-[0_0_15px_rgba(255,44,241,0.5)]">
             {ASCII_ART}
           </pre>
           <div className="space-y-2">
@@ -515,10 +515,10 @@ export function TerminalWindow() {
                   ➜
                 </motion.span>
                 <span className="shrink-0 whitespace-nowrap font-bold">
-                  <span className="text-accent">shasbin</span>
+                  <span className="text-[#ff2cf1]">shasbin</span>
                   <span className="text-white/30">:</span>
-                  <span className="text-accent-secondary">~</span>
-                  <span className="text-accent">$</span>
+                  <span className="text-purple-400">~</span>
+                  <span className="text-[#ff2cf1]">$</span>
                   <span className="text-white/20"> </span>
                 </span>
                 <div className="relative min-w-0 flex-1">
@@ -528,7 +528,7 @@ export function TerminalWindow() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    className="w-full border-none bg-transparent font-mono text-sm text-white outline-none caret-accent placeholder:text-white/10"
+                    className="w-full border-none bg-transparent font-mono text-sm text-white outline-none caret-[#ff2cf1] placeholder:text-white/10"
                     autoComplete="off"
                     spellCheck={false}
                     placeholder={placeholderText}

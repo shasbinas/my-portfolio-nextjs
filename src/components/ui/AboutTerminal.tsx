@@ -63,8 +63,8 @@ export function AboutTerminal({
         <span className="ml-4 font-mono text-[10px] text-white/40 tracking-wider">shasbin.bio</span>
       </div>
       <div className="flex min-h-0 flex-1 flex-col p-5 font-mono text-sm leading-relaxed sm:p-7">
-        <div className="shrink-0 text-accent font-bold">$ cat about.txt</div>
-        <div className="mt-4 min-h-0 flex-1 overflow-y-auto text-white/80 selection:bg-accent/30">
+        <div className="shrink-0 text-[#ff2cf1] font-bold">$ cat about.txt</div>
+        <div className="mt-4 min-h-0 flex-1 overflow-y-auto text-white/80 selection:bg-accent/30 scrollbar-hide">
           {commandExecuted && typedText.length > 0 ? typedText : "\u00A0"}
           {isTyping && <span className="animate-pulse text-accent">_</span>}
           {isComplete && (
