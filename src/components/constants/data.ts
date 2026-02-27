@@ -130,8 +130,7 @@ export const PROJECTS = [
     ],
     link: "",
     github: "https://github.com/shasbinas/project-management",
-    image:
-      "https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=2070&auto=format&fit=crop",
+    image: "/product_mangment (1).png",
     color: "#6366F1",
   },
   {
@@ -151,8 +150,7 @@ export const PROJECTS = [
     ],
     link: "",
     github: "https://github.com/shasbinas/my-portfolio-nextjs",
-    image:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop",
+    image: "/portfolio.png",
     color: "#3178C6",
   },
   {
@@ -196,8 +194,7 @@ export const PROJECTS = [
     ],
     link: "",
     github: "",
-    image:
-      "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=2070&auto=format&fit=crop",
+    image: "/chronoroyale.png",
     color: "#F59E0B",
   },
 ];
