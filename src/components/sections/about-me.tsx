@@ -76,20 +76,31 @@ export default function AboutMe() {
       </div>
 
       <div className="glass-panel hover-lift space-y-5">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-end">
+        <div className="flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 w-full">
           {/* Left Side: Interactive Terminal */}
-          <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2 px-1 text-xs font-bold animate-pulse tracking-wide">
+          <div 
+            className="flex flex-col gap-3"
+            style={{ flex: 1, minWidth: 0 }}
+          >
+            <div className="flex items-center gap-2 px-1 text-[11px] sm:text-xs font-bold animate-pulse tracking-wide shrink-0">
               <span className="text-[#ff2cf1] dark:text-[#ff2cf1] font-extrabold uppercase tracking-widest">Try me!</span>
               <span className="text-muted-foreground/60 font-medium">click & type</span>
               <span className="text-[#ff2cf1]/60">↓</span>
             </div>
-            <TerminalWindow />
+            <div className="flex-1 flex flex-col min-h-[400px] min-w-0">
+              <TerminalWindow />
+            </div>
           </div>
 
         {/* Right Side: Bio Terminal */}
-        <div className="flex flex-col gap-6">
-          <AboutTerminal />
+        <div 
+          className="flex flex-col gap-3"
+          style={{ flex: 1, minWidth: 0 }}
+        >
+          <div className="hidden lg:block h-[18px] shrink-0" aria-hidden="true"></div>
+          <div className="flex-1 flex flex-col min-h-[400px] min-w-0">
+            <AboutTerminal />
+          </div>
         </div>
       </div>
 

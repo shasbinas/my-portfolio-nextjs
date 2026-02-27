@@ -1,19 +1,17 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { ABOUT_ME } from "../constants/data";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Terminal, Cpu, Wifi, Disc, Keyboard } from "lucide-react";
 
 const ASCII_ART = `
-  ██████╗ ██╗  ██╗ █████╗ ███████╗██████╗ ██╗███╗   ██╗
- ██╔════╝ ██║  ██║██╔══██╗██╔════╝██╔══██╗██║████╗  ██║
- ╚█████╗  ███████║███████║███████╗██████╔╝██║██╔██╗ ██║
-  ╚═══██╗ ██╔══██║██╔══██║╚════██║██╔══██╗██║██║╚██╗██║
- ██████╔╝ ██║  ██║██║  ██║███████║██████╔╝██║██║ ╚████║
- ╚═════╝  ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝
+███████╗██╗  ██╗ █████╗ ███████╗██████╗ ██╗███╗   ██╗
+██╔════╝██║  ██║██╔══██╗██╔════╝██╔══██╗██║████╗  ██║
+███████╗███████║███████║███████╗██████╔╝██║██╔██╗ ██║
+╚════██║██╔══██║██╔══██║╚════██║██╔══██╗██║██║╚██╗██║
+███████║██║  ██║██║  ██║███████║██████╔╝██║██║ ╚████║
+╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝╚═╝  ╚═══╝
 `;
-
 interface LogEntry {
   id: string | number;
   message: React.ReactNode;
@@ -183,21 +181,21 @@ export function TerminalWindow() {
     const newLogs: LogEntry[] = lines.map((line) => ({
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
       message: line,
-      color: "text-white/60",
+      color: "text-muted-foreground",
     }));
     setHistory((prev) => [...prev, ...newLogs]);
   };
 
   const handleCommand = (cmd: string) => {
-    const clean = cmd.trim().toLowerCase().replace(/[^\x20-\x7E]/g, "");
+    const clean = cmd.trim().toLowerCase();
     setHistory((prev) => [
       ...prev,
       {
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
         message: (
           <span className="flex items-center gap-2">
-            <span className="text-fuchsia-500 font-bold">➜</span>
-            <span className="text-white font-medium">{cmd}</span>
+            <span className="text-accent">➜</span>
+            <span className="text-foreground">{cmd}</span>
           </span>
         ),
         isCommand: true,
@@ -216,37 +214,37 @@ export function TerminalWindow() {
             <span className="text-accent">
               <Typewriter text="whoami" delay={50} speed={10} />
             </span>
-            <span className="text-white/40">
+            <span className="text-muted-foreground">
               → <Typewriter text="system identity" delay={60} speed={5} />
             </span>
             <span className="text-accent">
               <Typewriter text="status" delay={100} speed={10} />
             </span>
-            <span className="text-white/40">
+            <span className="text-muted-foreground">
               → <Typewriter text="runtime state" delay={110} speed={5} />
             </span>
             <span className="text-accent">
               <Typewriter text="focus" delay={150} speed={10} />
             </span>
-            <span className="text-white/40">
+            <span className="text-muted-foreground">
               → <Typewriter text="current direction" delay={160} speed={5} />
             </span>
             <span className="text-accent">
               <Typewriter text="logs" delay={200} speed={10} />
             </span>
-            <span className="text-white/40">
+            <span className="text-muted-foreground">
               → <Typewriter text="recent activity" delay={210} speed={5} />
             </span>
             <span className="text-accent">
               <Typewriter text="thought" delay={250} speed={10} />
             </span>
-            <span className="text-white/40">
+            <span className="text-muted-foreground">
               → <Typewriter text="system reflection" delay={260} speed={5} />
             </span>
             <span className="text-accent">
               <Typewriter text="clear" delay={300} speed={10} />
             </span>
-            <span className="text-white/40">
+            <span className="text-muted-foreground">
               → <Typewriter text="clear terminal" delay={310} speed={5} />
             </span>
           </div>,
@@ -255,18 +253,19 @@ export function TerminalWindow() {
       case "whoami":
         addResponse([
           <div key="whoami" className="flex flex-col gap-1">
-            <span className="font-bold text-accent">
+            <span className="font-bold text-foreground">
+              <Typewriter text="Shasbin@workspace" speed={5} />
+            </span>
+            <span className="text-muted-foreground">
               <Typewriter
-                text={`${ABOUT_ME.name.split(" ")[0].toLowerCase()}@workspace`}
+                text="Full Stack Developer specializing in Node.js, Express, and Database Architectures"
+                delay={50}
                 speed={5}
               />
             </span>
-            <span className="text-white/70">
-              <Typewriter text={ABOUT_ME.title} delay={50} speed={5} />
-            </span>
-            <span className="italic text-white/50">
+            <span className="italic text-muted-foreground/80">
               <Typewriter
-                text={ABOUT_ME.description[0]}
+                text="building reliable, scalable, and secure server-side applications"
                 delay={100}
                 speed={5}
               />
@@ -279,20 +278,20 @@ export function TerminalWindow() {
         addResponse([
           <div key="status" className="flex flex-col gap-1">
             <div>
-              <span className="text-accent font-bold">SYSTEM:</span>{" "}
-              <span className="text-green-400 font-medium">
+              <span className="text-accent">SYSTEM:</span>{" "}
+              <span className="text-green-500">
                 <Typewriter text="ONLINE" delay={50} speed={10} />
               </span>
             </div>
             <div>
-              <span className="text-accent font-bold">WORKFLOW:</span>{" "}
-              <span className="text-yellow-400 font-medium">
+              <span className="text-accent">WORKFLOW:</span>{" "}
+              <span className="text-yellow-500">
                 <Typewriter text="ACTIVE" delay={100} speed={10} />
               </span>
             </div>
             <div>
-              <span className="text-accent font-bold">STATE:</span>{" "}
-              <span className="text-accent-secondary font-medium">
+              <span className="text-accent">STATE:</span>{" "}
+              <span className="text-purple-500">
                 <Typewriter text="STABLE" delay={150} speed={10} />
               </span>
             </div>
@@ -302,11 +301,11 @@ export function TerminalWindow() {
       case "focus":
         addResponse([
           <div key="focus" className="flex flex-col gap-1">
-            <span className="mb-2 text-white/40 underline decoration-accent/30 underline-offset-4 font-bold">
+            <span className="mb-2 text-muted-foreground underline decoration-accent/30 underline-offset-4">
               <Typewriter text="current focus:" speed={5} />
             </span>
             <span className="flex items-center gap-2">
-              <span className="text-accent font-bold">→</span>{" "}
+              <span className="text-accent">→</span>{" "}
               <Typewriter
                 text="developing secure authentication flows"
                 delay={50}
@@ -314,7 +313,7 @@ export function TerminalWindow() {
               />
             </span>
             <span className="flex items-center gap-2">
-              <span className="text-accent font-bold">→</span>{" "}
+              <span className="text-accent">→</span>{" "}
               <Typewriter
                 text="crafting robust RESTful APIs"
                 delay={100}
@@ -322,7 +321,7 @@ export function TerminalWindow() {
               />
             </span>
             <span className="flex items-center gap-2">
-              <span className="text-accent font-bold">→</span>{" "}
+              <span className="text-accent">→</span>{" "}
               <Typewriter
                 text="designing scalable backend architectures"
                 delay={150}
@@ -336,8 +335,8 @@ export function TerminalWindow() {
         addResponse([
           <div key="logs" className="flex flex-col gap-1 font-mono text-xs">
             <span className="flex gap-2">
-              <span className="text-accent font-bold">[INFO]</span>{" "}
-              <span className="text-white/60">
+              <span className="text-accent">[INFO]</span>{" "}
+              <span className="text-muted-foreground">
                 <Typewriter
                   text="optimizing API performance and security"
                   delay={0}
@@ -346,8 +345,8 @@ export function TerminalWindow() {
               </span>
             </span>
             <span className="flex gap-2">
-              <span className="text-accent font-bold">[INFO]</span>{" "}
-              <span className="text-white/60">
+              <span className="text-accent">[INFO]</span>{" "}
+              <span className="text-muted-foreground">
                 <Typewriter
                   text="integrating relational and NoSQL databases"
                   delay={50}
@@ -356,8 +355,8 @@ export function TerminalWindow() {
               </span>
             </span>
             <span className="flex gap-2">
-              <span className="text-accent font-bold">[INFO]</span>{" "}
-              <span className="text-white/60">
+              <span className="text-accent">[INFO]</span>{" "}
+              <span className="text-muted-foreground">
                 <Typewriter
                   text="implementing caching with Redis"
                   delay={100}
@@ -380,11 +379,11 @@ export function TerminalWindow() {
         break;
       case "sudo":
         addResponse([
-          <div key="sudo" className="flex flex-col text-red-500 font-bold">
+          <div key="sudo" className="flex flex-col text-red-500">
             <span>
               <Typewriter text="permission denied." speed={20} />
             </span>
-            <span className="text-white/40 font-normal">
+            <span className="text-muted-foreground">
               <Typewriter text="focus over shortcuts." delay={200} speed={20} />
             </span>
           </div>,
@@ -412,15 +411,15 @@ export function TerminalWindow() {
       case "info":
         return "text-accent-secondary";
       case "warning":
-        return "text-yellow-400";
+        return "text-yellow-500";
       case "success":
-        return "text-green-400";
+        return "text-green-500";
       case "error":
-        return "text-red-400";
+        return "text-red-500";
       case "system":
         return "text-accent";
       default:
-        return "text-white/40";
+        return "text-muted-foreground";
     }
   };
 
@@ -430,25 +429,25 @@ export function TerminalWindow() {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full font-mono text-xs leading-relaxed sm:text-sm"
+      className="relative w-full h-full flex flex-col font-mono text-xs leading-relaxed sm:text-sm"
     >
-      <div className="absolute -inset-0.5 rounded-xl bg-accent/20 opacity-20 blur-lg" />
-        <div
-          ref={containerRef}
-          onClick={handleContainerClick}
-          className="relative flex h-[350px] cursor-text flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.55)] backdrop-blur-xl shadow-2xl transition-all sm:h-[420px]"
-        >
-          <div className="flex h-12 shrink-0 select-none items-center justify-between border-b border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.7)] px-4">
+      <div className="absolute -inset-1 rounded-xl bg-linear-to-b from-accent/20 to-accent-secondary/20 opacity-20 blur-xl" />
+      <div
+        ref={containerRef}
+        onClick={handleContainerClick}
+        className="relative flex flex-1 h-full cursor-text flex-col overflow-hidden rounded-lg border border-border/50 bg-background/95 shadow-2xl backdrop-blur-xl transition-shadow hover:border-accent/40"
+      >
+        <div className="flex h-8 shrink-0 select-none items-center justify-between border-b border-border/50 bg-muted/30 px-4">
           <div className="flex items-center gap-2">
-            <div className="h-3 w-3 rounded-full bg-red-500/80" />
-            <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-            <div className="h-3 w-3 rounded-full bg-green-500/80" />
+            <div className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+            <div className="h-2.5 w-2.5 rounded-full bg-yellow-500/80" />
+            <div className="h-2.5 w-2.5 rounded-full bg-green-500/80" />
           </div>
-          <div className="flex items-center gap-2 text-[10px] font-medium tracking-wider text-muted-foreground/70">
-            <span className="text-accent font-bold">›_</span>
+          <div className="flex items-center gap-2 text-[10px] font-medium tracking-wider text-muted-foreground opacity-60">
+            <Terminal className="h-3 w-3" />
             <span>shasbin:~/welcome</span>
           </div>
-          <span className="flex shrink-0 items-center gap-1.5 rounded-md border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-medium tracking-wide text-accent shadow-[0_0_10px_rgba(var(--accent),0.1)]">
+          <span className="flex shrink-0 items-center gap-1.5 rounded-md border border-accent/30 bg-accent/10 px-2 py-0.5 text-[9px] font-medium tracking-wide text-accent sm:text-[10px]">
             <Keyboard className="h-3 w-3 shrink-0" />
             <span className="hidden sm:inline">Interactive Terminal</span>
             <span className="sm:hidden">Type</span>
@@ -456,12 +455,12 @@ export function TerminalWindow() {
         </div>
         <div
           ref={scrollRef}
-          className="relative flex-1 overflow-auto p-5 scroll-smooth sm:p-7 scrollbar-hide"
+          className="relative flex-1 overflow-auto p-4 scroll-smooth sm:p-6"
         >
-          <pre className="mb-6 self-start whitespace-pre font-mono text-[6px] font-bold leading-[1.1] text-[#ff2cf1] selection:bg-transparent sm:mb-8 sm:text-[11px] drop-shadow-[0_0_15px_rgba(255,44,241,0.5)]">
+          <pre className="mb-4 self-start whitespace-pre font-mono text-[5px] font-bold leading-[1.1] text-transparent selection:bg-transparent sm:mb-6 sm:text-[10px] bg-linear-to-b from-accent to-accent-secondary bg-clip-text">
             {ASCII_ART}
           </pre>
-          <div className="space-y-2">
+          <div className="space-y-1.5">
             <AnimatePresence mode="popLayout">
               {history.map((log) => (
                 <motion.div
@@ -469,7 +468,7 @@ export function TerminalWindow() {
                   layout
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="flex w-full flex-row items-baseline gap-2 font-medium leading-tight text-foreground/90 wrap-break-word whitespace-pre-wrap"
+                  className="flex w-full flex-row items-baseline gap-2 font-medium leading-tight text-muted-foreground wrap-break-word whitespace-pre-wrap"
                 >
                   {!log.isCommand && (
                     <>
@@ -480,7 +479,7 @@ export function TerminalWindow() {
                       )}
                       {log.level && (
                         <span
-                          className={`shrink-0 min-w-[75px] select-none ${getLevelColor(log.level)}`}
+                          className={`shrink-0 min-w-14 select-none ${getLevelColor(log.level)}`}
                         >
                           [{log.level}]
                         </span>
@@ -489,7 +488,7 @@ export function TerminalWindow() {
                   )}
                   <span
                     className={
-                      log.isCommand ? "text-foreground font-bold" : log.color || "text-foreground/90"
+                      log.isCommand ? "" : log.color || "text-foreground/90"
                     }
                   >
                     {log.message}
@@ -503,6 +502,15 @@ export function TerminalWindow() {
                 animate={{ opacity: 1 }}
                 className="group relative flex items-center gap-2 pb-1 pt-2"
               >
+                <motion.div
+                  animate={{ opacity: [0.3, 0.6, 0.3] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute -inset-x-2 inset-y-0 -z-10 rounded bg-accent/5"
+                />
                 <motion.span
                   animate={{ x: [0, 3, 0] }}
                   transition={{
@@ -510,16 +518,20 @@ export function TerminalWindow() {
                     repeat: Infinity,
                     ease: "easeInOut",
                   }}
-                  className="shrink-0 text-accent font-bold"
+                  className="shrink-0 text-accent-secondary"
                 >
                   ➜
                 </motion.span>
-                <span className="shrink-0 whitespace-nowrap font-bold">
-                  <span className="text-[#ff2cf1]">shasbin</span>
-                  <span className="text-muted-foreground/30">:</span>
-                  <span className="text-purple-600 dark:text-purple-400">~</span>
-                  <span className="text-[#ff2cf1]">$</span>
-                  <span className="text-muted-foreground/20"> </span>
+                <span className="shrink-0 whitespace-nowrap">
+                  <span className="hidden text-accent sm:inline">shasbin</span>
+                  <span className="hidden text-muted-foreground sm:inline">
+                    :
+                  </span>
+                  <span className="hidden text-accent-secondary sm:inline">
+                    ~
+                  </span>
+                  <span className="text-muted-foreground">$</span>
+                  <span className="text-muted-foreground"> </span>
                 </span>
                 <div className="relative min-w-0 flex-1">
                   <input
@@ -528,7 +540,7 @@ export function TerminalWindow() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={handleKeyDown}
-                    className="w-full border-none bg-transparent font-mono text-sm text-foreground outline-none caret-[#ff2cf1] placeholder:text-muted-foreground/20"
+                    className="w-full border-none bg-transparent font-mono text-sm text-foreground outline-none caret-accent placeholder:text-accent/30"
                     autoComplete="off"
                     spellCheck={false}
                     placeholder={placeholderText}
@@ -538,20 +550,20 @@ export function TerminalWindow() {
             )}
           </div>
         </div>
-        <div className="flex h-10 shrink-0 items-center justify-between border-t border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.7)] px-4 font-mono text-[10px] text-muted-foreground/60">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1.5 line-clamp-1">
+        <div className="flex h-7 shrink-0 items-center justify-between border-t border-border/50 bg-muted/20 px-3 font-mono text-[9px] text-muted-foreground sm:text-[10px]">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
               <Disc className={`h-3 w-3 ${isBooting ? "animate-spin" : ""}`} />
-              <span className="uppercase tracking-widest whitespace-nowrap">Status: {isBooting ? "Booting" : "Ready"}</span>
+              <span>STATUS: READY</span>
             </div>
             <div className="hidden items-center gap-1.5 sm:flex">
               <Cpu className="h-3 w-3" />
-              <span className="uppercase tracking-widest">Mem: 8KB</span>
+              <span>MEM: {history.length * 2}KB</span>
             </div>
           </div>
-          <div className="flex items-center gap-1.5">
-            <Wifi className="h-3 w-3 text-green-500/80" />
-            <span className="uppercase tracking-widest">Online</span>
+          <div className="flex items-center gap-1.5 text-accent">
+            <Wifi className="h-3 w-3" />
+            <span>ONLINE</span>
           </div>
         </div>
       </div>

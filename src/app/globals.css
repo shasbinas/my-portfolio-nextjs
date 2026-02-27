@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-secondary: hsl(var(--accent-secondary));
+  --color-border: hsl(var(--border));
+  --color-border-hover: hsl(var(--border-hover));
+  --color-grid-line: hsl(var(--grid-line));
+  --radius-xl: var(--radius);
+}
+
 @layer base {
   :root {
     --background: 275 80% 99%;
@@ -122,14 +135,6 @@
 }
 
 @layer utilities {
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
   a,
   .link {
     color: inherit;
@@ -284,7 +289,7 @@
     content: "";
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, hsl(var(--border-hover)), transparent);
+    background: linear-gradient(90deg, hsl(var(--border)), transparent);
     opacity: 0.5;
   }
 
@@ -671,5 +676,17 @@
       transform: translateY(15px) scale(0.98);
       filter: blur(1px);
     }
+  }
+  @keyframes scan {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .animate-scan {
+    animation: scan 2s linear infinite;
   }
 }

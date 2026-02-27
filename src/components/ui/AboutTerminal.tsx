@@ -52,7 +52,7 @@ export function AboutTerminal({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="relative flex h-[350px] w-full flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.55)] backdrop-blur-xl shadow-2xl transition-all sm:h-[420px]">
+      className="relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.55)] backdrop-blur-xl shadow-2xl transition-all">
         <div className="flex h-12 shrink-0 select-none items-center justify-between border-b border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.7)] px-4">
         <div className="flex items-center gap-2">
           <div className="h-3 w-3 rounded-full bg-red-500/80" />
