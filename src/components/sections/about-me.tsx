@@ -75,16 +75,17 @@ export default function AboutMe() {
         <h2 className="section-title w-full">about.</h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-end">
-        {/* Left Side: Interactive Terminal */}
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2 px-1 text-xs font-bold animate-pulse tracking-wide">
-            <span className="text-[#ff2cf1] dark:text-[#ff2cf1] font-extrabold uppercase tracking-widest">Try me!</span>
-            <span className="text-muted-foreground/60 font-medium">click & type</span>
-            <span className="text-[#ff2cf1]/60">↓</span>
+      <div className="glass-panel hover-lift space-y-5">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-end">
+          {/* Left Side: Interactive Terminal */}
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-2 px-1 text-xs font-bold animate-pulse tracking-wide">
+              <span className="text-[#ff2cf1] dark:text-[#ff2cf1] font-extrabold uppercase tracking-widest">Try me!</span>
+              <span className="text-muted-foreground/60 font-medium">click & type</span>
+              <span className="text-[#ff2cf1]/60">↓</span>
+            </div>
+            <TerminalWindow />
           </div>
-          <TerminalWindow />
-        </div>
 
         {/* Right Side: Bio Terminal */}
         <div className="flex flex-col gap-6">
@@ -136,6 +137,7 @@ export default function AboutMe() {
             </a>
           );
         })}
+      </div>
       </div>
     </section>
   );

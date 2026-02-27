@@ -436,9 +436,9 @@ export function TerminalWindow() {
         <div
           ref={containerRef}
           onClick={handleContainerClick}
-          className="relative flex h-[350px] cursor-text flex-col overflow-hidden rounded-2xl border-2 border-accent/30 bg-background/60 backdrop-blur-xl shadow-2xl transition-all hover:border-accent/50 sm:h-[420px]"
+          className="relative flex h-[350px] cursor-text flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.55)] backdrop-blur-xl shadow-2xl transition-all sm:h-[420px]"
         >
-          <div className="flex h-12 shrink-0 select-none items-center justify-between border-b border-border/50 bg-muted/40 px-4">
+          <div className="flex h-12 shrink-0 select-none items-center justify-between border-b border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.7)] px-4">
           <div className="flex items-center gap-2">
             <div className="h-3 w-3 rounded-full bg-red-500/80" />
             <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
@@ -538,7 +538,7 @@ export function TerminalWindow() {
             )}
           </div>
         </div>
-        <div className="flex h-10 shrink-0 items-center justify-between border-t border-border/50 bg-muted/40 px-4 font-mono text-[10px] text-muted-foreground/60">
+        <div className="flex h-10 shrink-0 items-center justify-between border-t border-[hsl(var(--border)/0.5)] bg-[hsl(var(--muted)/0.7)] px-4 font-mono text-[10px] text-muted-foreground/60">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5 line-clamp-1">
               <Disc className={`h-3 w-3 ${isBooting ? "animate-spin" : ""}`} />
