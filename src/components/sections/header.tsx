@@ -140,7 +140,7 @@ const Header = () => {
               availability
             </p>
             <p className="font-semibold">
-              Open to remote collabs · 9:00 AM - 7:00 PM IST
+              Open to Job Opportunities & Freelance Projects
             </p>
           </div>
           <div className="contact-card">
