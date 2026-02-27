@@ -64,20 +64,16 @@ function ProjectRow({
   const rowRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div
-      className="border-b border-black/10 bg-white dark:border-[hsl(var(--border)/0.65)] dark:bg-[hsl(var(--muted)/0.72)] last:border-b-0"
-      ref={rowRef}
-    >
+    <div className="border-b border-foreground/10 last:border-b-0" ref={rowRef}>
       {/* Row Header */}
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onClick={onToggle}
-        whileHover={{ x: 10 }}
+        whileHover={{ x: 10, backgroundColor: "rgba(var(--foreground), 0.05)" }}
         className={`
           group relative py-6 px-4 md:px-8 cursor-pointer transition-all duration-300
-          hover:bg-black/[0.02] dark:hover:bg-[hsl(var(--muted)/0.72)]
-          ${isExpanded ? "bg-black/[0.02] dark:bg-[hsl(var(--muted)/0.72)]" : ""}
+          ${isExpanded ? "bg-foreground/[0.06]" : ""}
         `}
       >
         <div className="flex items-center justify-between gap-4">
@@ -160,7 +156,7 @@ function ProjectRow({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="overflow-hidden bg-white dark:bg-[hsl(var(--muted)/0.72)]"
+            className="overflow-hidden bg-foreground/[0.04]"
           >
             <div className="px-4 md:px-8 pb-10 pt-6">
               <div className="grid lg:grid-cols-12 gap-10 items-start">
@@ -338,7 +334,7 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="rounded-3xl border border-black/10 bg-white dark:border-[hsl(var(--border)/0.65)] dark:bg-[hsl(var(--muted)/0.62)] backdrop-blur-md overflow-hidden shadow-lg shadow-black/5 dark:shadow-2xl dark:shadow-black/40">
+        <div className="rounded-3xl border border-border/60 bg-foreground/[0.03] backdrop-blur-md overflow-hidden shadow-2xl">
           <div className="flex flex-col">
             {PROJECTS.map((project: any, index: number) => (
               <ProjectRow
