@@ -2,72 +2,73 @@ import { SKILLS } from "@/components/constants/data";
 import Image from "next/image";
 
 const SKILL_ICONS: Record<string, string> = {
-  HTML: "html",
-  HTML5: "html",
-  CSS: "css",
-  CSS3: "css",
-  JavaScript: "js",
+  // Languages
   "JavaScript (ES6+)": "js",
   TypeScript: "ts",
-  React: "react",
+  HTML5: "html",
+  CSS3: "css",
+  SQL: "mysql",
+  Python: "python",
+  C: "c",
+  "C++": "cpp",
+  Java: "java",
+  // Frontend
   "React.js": "react",
   "Next.js": "nextjs",
   Redux: "redux",
   "Redux Toolkit": "redux",
+  jQuery: "jquery",
   "Tailwind CSS": "tailwind",
-  TailwindCSS: "tailwind",
   Bootstrap: "bootstrap",
   "Framer Motion": "framer",
-  jQuery: "jquery",
-
+  // Backend
   "Node.js": "nodejs",
   "Express.js": "express",
   "Nest.js": "nestjs",
-  NestJS: "nestjs",
+  "RESTful APIs": "",
+  JWT: "",
+  WebSocket: "",
   GraphQL: "graphql",
-  JWT: "jwt",
-  "Socket.io": "socketio",
-  WebSocket: "websocket",
-
+  "Socket.io": "socketdotio",
+  // Databases
   MongoDB: "mongodb",
-  MySQL: "mysql",
   PostgreSQL: "postgresql",
   Redis: "redis",
   "Mongoose ODM": "mongodb",
   "Prisma ORM": "prisma",
-
-  C: "c",
-  "C++": "cpp",
-  Java: "java",
-  Python: "py",
-  SQL: "mysql",
-
-  AWS: "aws",
+  // Cloud & DevOps
+  "AWS (Cognito, Lambda, API Gateway, EC2, S3)": "aws",
   Docker: "docker",
-  Vercel: "vercel",
-  "GitHub Actions": "githubactions",
-  "CI/CD": "githubactions",
-  Linux: "linux",
-  "Linux/Bash": "linux",
-
-  Git: "git",
+  "CI/CD": "",
   GitHub: "github",
-  GitLab: "gitlab",
-  Postman: "postman",
-  Figma: "figma",
-  Vite: "vite",
+  "Linux/Bash": "linux",
+  // Testing
   Jest: "jest",
   Playwright: "playwright",
-  Supertest: "jest",
+  Postman: "postman",
+  Supertest: "",
+  // Tools
+  Git: "git",
   Swagger: "swagger",
+  Figma: "figma",
+  "Adobe Photoshop": "adobephotoshop",
+  Vite: "vite",
+  "VS Code": "vscode",
   Jira: "jira",
   Notion: "notion",
   ESLint: "eslint",
   npm: "npm",
   Yarn: "yarn",
-  Windows: "windows",
+  // Architecture & Concepts
+  MVC: "",
+  "SOLID Principles": "",
+  OOP: "",
+  "Design Patterns": "",
+  "System Design": "",
+  "API Rate Limiting": "",
+  "Load Balancing": "",
+  "Data Structures & Algorithms": "",
 };
-
 const SkillBadge = ({ skill }: { skill: string }) => (
   <span className="skill-chip">
     {SKILL_ICONS[skill] && (

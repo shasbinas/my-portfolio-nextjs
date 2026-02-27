@@ -99,7 +99,7 @@ export const SKILLS = {
     "Yarn",
   ],
 
-  architectureConcepts: [
+  "architecture Concepts": [
     "MVC",
     "SOLID Principles",
     "OOP",
