@@ -429,13 +429,13 @@ export function TerminalWindow() {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-      className="relative w-full h-full flex flex-col font-mono text-xs leading-relaxed sm:text-sm"
+      className="relative w-full h-full min-h-[400px] flex flex-col font-mono text-xs leading-relaxed sm:text-sm"
     >
       <div className="absolute -inset-1 rounded-xl bg-linear-to-b from-accent/20 to-accent-secondary/20 opacity-20 blur-xl" />
       <div
         ref={containerRef}
         onClick={handleContainerClick}
-        className="relative flex flex-1 h-full cursor-text flex-col overflow-hidden rounded-lg border border-border/50 bg-background/95 shadow-2xl backdrop-blur-xl transition-shadow hover:border-accent/40"
+        className="relative flex flex-1 h-full min-h-[400px] cursor-text flex-col overflow-hidden rounded-lg border border-border/50 bg-background/95 shadow-2xl backdrop-blur-xl transition-shadow hover:border-accent/40"
       >
         <div className="flex h-8 shrink-0 select-none items-center justify-between border-b border-border/50 bg-muted/30 px-4">
           <div className="flex items-center gap-2">
@@ -455,7 +455,7 @@ export function TerminalWindow() {
         </div>
         <div
           ref={scrollRef}
-          className="relative flex-1 overflow-auto p-4 scroll-smooth sm:p-6"
+          className="relative flex-1 min-h-[300px] overflow-auto p-4 scroll-smooth sm:p-6"
         >
           <pre className="mb-4 self-start whitespace-pre font-mono text-[5px] font-bold leading-[1.1] text-transparent selection:bg-transparent sm:mb-6 sm:text-[10px] bg-linear-to-b from-accent to-accent-secondary bg-clip-text">
             {ASCII_ART}
